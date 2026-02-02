@@ -30,8 +30,8 @@ We have format:
 # Contribution
 
 Thank you very much:
-- Dave Gagani (racist)
-- Piyaa-bot
+- dobidobop (Dave Gagani)
+- Piyaa-bot (Feahmar Bentazal)
 
 # TODO
 
@@ -42,4 +42,4 @@ Thank you very much:
 
 # Contact
 
-Dont contact please
+Do not contact please
