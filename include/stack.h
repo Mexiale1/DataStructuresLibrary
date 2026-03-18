@@ -1,11 +1,10 @@
 #pragma once
 
-template <typename T>
+#include <cstddef>
 
-class Stack {
-    public:
+template <typename T> struct Stack {
         // Push an item onto the stack, accepts the item (any data type) as a parameter.
-        virtual void push(const T& item) = 0;
+        virtual void push(const T& x) = 0;
         // Pop the top item from the stack.
         virtual void pop() = 0;
         // Returns the top item of the stack without removing it.
