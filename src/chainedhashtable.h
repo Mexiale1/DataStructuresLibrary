@@ -16,6 +16,10 @@ private:
   std::hash<T> myHash;
 
 public:
+  ChainedHashTable() {
+    table = new array<DLList<T>>(10);
+    items = 0;
+  }
   void resize() {
     size_t newSize = std::max((size_t)1, 2 * table.length);
     array<DLList<T>> newTable(newSize);
@@ -50,7 +54,7 @@ public:
     return true;
   }
 
-  bool remove(const T &x) {
+  T remove(const T &x) {
     size_t hashValue = hash(x);
     T toRemove = NULL;
 
@@ -67,7 +71,7 @@ public:
     return toRemove;
   }
 
-  bool find(const T &x) {
+  bool find(const T &x) const {
     size_t hashValue = hash(x);
     bool found = false;
 
