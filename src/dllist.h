@@ -115,4 +115,6 @@ public:
   }
 
   size_t size() const override { return listSize; }
+
+  void addFirst(const T &x) { add(0, x); }
 };

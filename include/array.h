@@ -51,7 +51,22 @@ template <typename T> struct array {
     return *this;
   }
 
-  T begin() { return arr; }
+  array<T> &operator=(array<T> &&anotherArr) {
+    if (this == &anotherArr) {
+      return *this;
+    }
+
+    if (arr != nullptr) {
+      delete[] arr;
+    }
+
+    arr = anotherArr.arr;
+    anotherArr = nullptr;
+    length = anotherArr.length;
+    return *this;
+  }
+
+  T *begin() { return arr; }
 
   T end() { return arr + length; }
 };
