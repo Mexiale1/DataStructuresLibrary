@@ -1,4 +1,5 @@
 # DataStructuresLibrary
+
 A Library of Data Structures discovered through the CMSC 123 course.
 
 # Overview
@@ -101,19 +102,19 @@ Execution time is measured using std::chrono.
 # Miscellaneous (Won't edit pa atm kay basin needed pani and naay iadd jesse)
 We have format:
 
-| Input | Description        |
-|-------|--------------------|
-| A     | Add elements       |
-| B     | Remove elements    |
-| C     | Shuffles elements  |
-| D     | Breakdance         |
-| E     | Backflip           |
-| F     | End program        |
+| Input | Description       |
+| ----- | ----------------- |
+| A     | Add elements      |
+| B     | Remove elements   |
+| C     | Shuffles elements |
+| D     | Breakdance        |
+| E     | Backflip          |
+| F     | End program       |
 
 # Benchmarking
 
 | Data Structure | Speed |
-|----------------|-------|
+| -------------- | ----- |
 | A              | XXms  |
 | B              | XXms  |
 | C              | XXms  |
