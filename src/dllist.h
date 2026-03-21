@@ -27,7 +27,7 @@ public:
   // Index refers to the index computer programmers usually use for arrays
   // i.e. Starts at 0
 
-  void checkBounds(size_t index) {
+  void checkBounds(size_t index) const {
     if (index >= listSize) {
       throw std::out_of_range("Index is out of bounds");
     }
@@ -40,7 +40,7 @@ public:
 
     if (index <= listSize / 2) {
       head = dummy->next;
-      for (size_t i = 0; i <= index; i++) {
+      for (size_t i = 0; i < index; i++) {
         head = head->next;
       }
     } else {
@@ -117,4 +117,19 @@ public:
   size_t size() const override { return listSize; }
 
   void addFirst(const T &x) { add(0, x); }
+
+  void printList() {
+    Node<T> *head = dummy->next;
+
+    while (head != dummy) {
+      std::cout << head->data;
+      if (head->next != dummy) {
+        std::cout << " -> ";
+      }
+
+      head = head->next;
+    }
+
+    std::cout << std::endl;
+  }
 };
