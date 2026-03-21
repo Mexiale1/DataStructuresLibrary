@@ -1,4 +1,4 @@
-#define UPPER_LIMIT 10000000
+#define UPPER_LIMIT 100000
 
 #include "../src/dllist.h"
 #include <chrono>
@@ -11,27 +11,30 @@ int main() {
 
   for (size_t i = 0; i < UPPER_LIMIT; i++) {
     int randValue = std::rand();
-    dog.addFirst(randValue);
+    int randIndex = std::rand() % (dog.size() + 1);
+    dog.add(randIndex, randValue);
   }
 
   std::chrono::time_point afterAdd = std::chrono::system_clock::now();
 
+  std::chrono::duration<double> add = afterAdd - beforeTest;
+  std::cout << "Add: " << add.count() << "s" << std::endl;
+
   dog.myMergeSort();
 
   std::chrono::time_point afterSort = std::chrono::system_clock::now();
+  std::chrono::duration<double> sorting = afterSort - afterAdd;
 
-  for (size_t i = 0; i < UPPER_LIMIT / 10; i++) {
-    dog.remove(0);
+  std::cout << "Sorting: " << sorting.count() << "s" << std::endl;
+
+  for (size_t i = 0; i < UPPER_LIMIT; i++) {
+    int randIndex = std::rand() % dog.size();
+    dog.remove(randIndex);
   }
 
   std::chrono::time_point afterRemove = std::chrono::system_clock::now();
 
-  std::chrono::duration<double> add = afterAdd - beforeTest;
-  std::chrono::duration<double> sorting = afterSort - afterAdd;
   std::chrono::duration<double> remove = afterRemove - afterSort;
-
-  std::cout << "Add: " << add.count() << "s" << std::endl;
-  std::cout << "Sorting: " << sorting.count() << "s" << std::endl;
   std::cout << "Remove: " << remove.count() << "s" << std::endl;
 
   return 0;
