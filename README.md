@@ -101,7 +101,7 @@ Execution time is measured using std::chrono.
 
 # Benchmark Results
 We have format:
-
+**Deque Performance**
 | Input | Description       |
 | ----- | ----------------- |
 | A     | Add elements      |
@@ -110,17 +110,6 @@ We have format:
 | D     | Breakdance        |
 | E     | Backflip          |
 | F     | End program       |
-
-# Benchmarking
-
-| Data Structure | Speed |
-| -------------- | ----- |
-| A              | XXms  |
-| B              | XXms  |
-| C              | XXms  |
-| D              | XXms  |
-| E              | XXms  |
-| F              | XXms  |
 
 # Contributors
 Thank you very much:
