@@ -47,7 +47,7 @@ public:
             }
         }
 
-        return *list; // ⚠️ (not ideal but matches your interface)
+        return *list; 
     }
 
     List<T> inEdges(const int &i) const override {
@@ -61,4 +61,4 @@ public:
 
         return *list;
     }
-};
+}
