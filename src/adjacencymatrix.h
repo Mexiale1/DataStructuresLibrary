@@ -39,6 +39,8 @@ public:
     }
 
     List<T> outEdges(const int &i) const override {
+        if (i >= (int)n) return nullptr;
+        
         ArrayStack<T>* list = new ArrayStack<T>();
 
         for (size_t j = 0; j < n; j++) {

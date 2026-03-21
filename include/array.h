@@ -38,16 +38,17 @@ template <typename T> struct array {
   }
 
   array<T> &operator=(array<T> &anotherArr) {
-    if (this == &anotherArr) {
-      return *this;
-    }
+    if (this == &anotherArr) return *this;
 
-    if (arr != nullptr) {
-      delete[] arr;
-    }
+    delete[] arr;
 
-    arr = anotherArr.arr;
     length = anotherArr.length;
+    arr = new T[length];
+
+    for (size_t i = 0; i < length; i++) {
+      arr[i] = anotherArr.arr[i];
+    }
+
     return *this;
   }
 
