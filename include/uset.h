@@ -12,5 +12,5 @@ template <typename T> class Uset {
   // parameter.
   virtual T remove(const T &item) = 0;
   // Returns true if the item exists in the set, false otherwise.
-  virtual bool find(const T &item) const = 0;
+  virtual T find(const T &item) const = 0;
 };
