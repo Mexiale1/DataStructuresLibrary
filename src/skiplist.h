@@ -272,7 +272,6 @@ public:
             std::cout << "nullptr\n";
         }
     }
-
     void printReverse() const {
         for (int r = maxHeight; r >= 0; r--) {
             Node<T>* u = sentinel->next[r];
