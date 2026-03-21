@@ -61,12 +61,12 @@ template <typename T> struct array {
     }
 
     arr = anotherArr.arr;
-    anotherArr = nullptr;
+    anotherArr.arr = nullptr;
     length = anotherArr.length;
     return *this;
   }
 
   T *begin() { return arr; }
 
-  T end() { return arr + length; }
+  T *end() { return arr + length; }
 };
