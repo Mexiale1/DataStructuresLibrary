@@ -258,24 +258,30 @@ public:
         return T(); 
     }
 
+
     //print functions for testing
     void print() const {
-        Node<T>* u = sentinel->next[0]; 
-        std::cout << "Level 0: ";
-        while (u != nullptr) {
-            std::cout << u->data << " -> ";
-            u = u->next[0];
+        for (int r = maxHeight; r >= 0; r--) {
+            Node<T>* u = sentinel->next[r];
+
+            std::cout << "Level " << r << ": ";
+            while (u != nullptr) {
+                std::cout << u->data << " -> ";
+                u = u->next[r];
+            }
+            std::cout << "nullptr\n";
         }
-        std::cout << "nullptr\n";
     }
 
     void printReverse() const {
-        Node<T>* u = sentinel->next[0]; 
-        std::cout << "Level 0 (descending view): ";
-        while (u != nullptr) {
-            std::cout << u->data << " -> ";
-            u = u->next[0];
+        for (int r = maxHeight; r >= 0; r--) {
+            Node<T>* u = sentinel->next[r];
+            std::cout << "Level " << r << ": ";
+            while (u != nullptr) {
+                std::cout << u->data << " -> ";
+                u = u->next[r];
+            }
+            std::cout << "nullptr\n";
         }
-        std::cout << "nullptr\n";
     }
 };
