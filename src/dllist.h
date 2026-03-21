@@ -16,6 +16,8 @@ private:
   size_t listSize;
 
 public:
+  // Constructors and Destructors
+
   DLList() : listSize(0) {
     dummy = new Node<T>;
     dummy->next = dummy;
@@ -106,6 +108,8 @@ public:
 
     return *this;
   }
+
+  // Realization
 
   // I will place a comment over here about index
   // Index refers to the index computer programmers usually use for arrays
@@ -212,4 +216,75 @@ public:
 
     std::cout << std::endl;
   }
+
+  // My funny sort
+
+  void split(Node<T> *head, Node<T> *&left, Node<T> *&right) {
+    Node<T> *slow = head;
+    Node<T> *fast = head->next;
+
+    while (fast != dummy && fast->next != dummy) {
+      slow = slow->next;
+      fast = fast->next->next;
+    }
+
+    left = head;
+    right = slow->next;
+
+    slow->next->prev = dummy;
+    slow->next = dummy;
+  }
+
+  Node<T> *merge(Node<T> *left, Node<T> *right) {
+    Node<T> *result = dummy;
+
+    while (left != dummy && right != dummy) {
+      if (left->data <= right->data) {
+        result->next = left;
+        left->prev = result;
+        result = left;
+        left = left->next;
+      } else {
+        result->next = right;
+        right->prev = result;
+        result = right;
+        right = right->next;
+      }
+    }
+
+    while (left != dummy) {
+      result->next = left;
+      left->prev = result;
+      result = left;
+      left = left->next;
+    }
+
+    while (right != dummy) {
+      result->next = right;
+      right->prev = result;
+      result = right;
+      right = right->next;
+    }
+
+    result->next = dummy;
+    dummy->prev = result;
+
+    return dummy->next;
+  }
+
+  Node<T> *mergeSort(Node<T> *head) {
+    if (head == dummy || head->next == dummy) {
+      return head;
+    }
+
+    Node<T> *left, *right;
+    split(head, left, right);
+
+    left = mergeSort(left);
+    right = mergeSort(right);
+
+    return merge(left, right);
+  }
+
+  void myMergeSort() { dummy->next = mergeSort(dummy->next); }
 };
