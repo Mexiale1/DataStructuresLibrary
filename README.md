@@ -8,60 +8,58 @@ The goal of this project is to understand how common data structures work intern
 # Implemented Data Structures
 **Linear Structures**
 - Stack (FILO Queue)
-     Implementation: ArrayStack
+-      Implementation: ArrayStack
 - Queue (FIFO Queue)
-     Implementation: SLList (Singly Linked List)
+-      Implementation: SLList (Singly Linked List)
 - Deque (Double-ended Queue)
-     Implementation: ArrayDeque
+-      Implementation: ArrayDeque
 
 **Lists**
 - Array-based List
-Implemented through ArrayDeque
+-      Implemented through ArrayDeque
 - Doubly Linked List
-Implementation: DLList
+-      Implementation: DLList
 
 **Sets**
 - Unsorted Set
-Implementation: ChainedHashTable
+-      Implementation: ChainedHashTable
 - Sorted Set
-Implementations:
-Skiplist
-RBTreeSet (Red-Black Tree)
+-      Implementations: Skiplist & RBTreeSet (Red-Black Tree)
 
 **Graph**
 - Adjacency Matrix Representation
-Implementation: AdjacencyMatrix
+-      Implementation: AdjacencyMatrix
 
 # Project Structure
-**include/ **
-array.h 
-deque.h 
-graph.h 
-list.h 
-queue.h 
-sset.h 
-stack.h 
-uset.h 
+**include/**
+- array.h
+- deque.h
+- graph.h
+- list.h
+- queue.h
+- sset.h
+- stack.h
+- uset.h 
 
-**src/ **
-adjacencymatrix.h 
-arraydeque.h 
-arraystack.h 
-chainedhashtable.h 
-dllist.h 
-redblacktrees.h 
-skiplist.h 
-sllist.h 
+**src/**
+- adjacencymatrix.h
+- arraydeque.h
+- arraystack.h
+- chainedhashtable.h
+- dllist.h
+- redblacktrees.h
+- skiplist.h
+- sllist.h 
 
-**tests/ **
-adjacencymatrix.cpp 
-arraydeque.cpp 
-arraystack.cpp 
-chainedhashtable.cpp 
-dllist.cpp 
-redblacktrees.cpp 
-skiplist.cpp 
-sllist.cpp
+**tests/**
+- adjacencymatrix.cpp
+- arraydeque.cpp
+- arraystack.cpp
+- chainedhashtable.cpp
+- dllist.cpp
+- redblacktrees.cpp
+- skiplist.cpp
+- sllist.cpp
 
 # Instructions
 Using g++, we compile a test file using: 
