@@ -8,11 +8,11 @@ The goal of this project is to understand how common data structures work intern
 # Implemented Data Structures
 **Linear Structures**
 - Stack (FILO Queue)
--     Implementation: ArrayStack
+     Implementation: ArrayStack
 - Queue (FIFO Queue)
--     Implementation: SLList (Singly Linked List)
+     Implementation: SLList (Singly Linked List)
 - Deque (Double-ended Queue)
--     Implementation: ArrayDeque
+     Implementation: ArrayDeque
 
 **Lists**
 - Array-based List
