@@ -99,7 +99,7 @@ for (int i = 0; i < 1000000; i++) {
 
 Execution time is measured using std::chrono.
 
-# Miscellaneous (Won't edit pa atm kay basin needed pani and naay iadd jesse)
+# Benchmark Results
 We have format:
 
 | Input | Description       |
@@ -132,12 +132,31 @@ Thank you very much:
 - If there are any, insert here.
 
 # TODO
-
-- Add the rest of the thingies
-- Make a format for the `.cpp` files for running
-- Make the big input .txt file that does all everything
-- Complete project by December 23, 2025
+- Add more data structure implementations
 
 # Contact
+For questions or feedback about this project, please contact the project contributors.
 
-Do not contact please
+# License
+This project is licensed under the MIT License - see the LICENSE file for details.
+-     MIT License
+
+Copyright (c) 2024 CMSC-123-Final-Project
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
