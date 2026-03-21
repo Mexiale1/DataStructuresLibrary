@@ -16,12 +16,100 @@ private:
   size_t listSize;
 
 public:
-  DLList() {
+  // Constructors and Destructors
+
+  DLList() : listSize(0) {
     dummy = new Node<T>;
     dummy->next = dummy;
     dummy->prev = dummy;
-    listSize = 0;
   }
+
+  ~DLList() {
+    Node<T> *head = dummy->next, *next;
+
+    while (head != dummy) {
+      next = head->next;
+      delete head;
+      head = next;
+    }
+
+    delete dummy;
+  }
+
+  // Just adding the rule of five because whoever thought of this is so funny
+
+  DLList(const DLList<T> &anotherDLList) : listSize(0) {
+    dummy = new Node<T>;
+    dummy->next = dummy;
+    dummy->prev = dummy;
+
+    Node<T> *head = anotherDLList.dummy->next;
+
+    while (head != anotherDLList.dummy) {
+      add(listSize, head->data);
+      head = head->next;
+    }
+  }
+
+  DLList(DLList<T> &&anotherDLList) noexcept {
+    dummy = anotherDLList.dummy;
+    listSize = anotherDLList.size();
+
+    anotherDLList.dummy = new Node<T>;
+    anotherDLList.dummy->next = anotherDLList.dummy;
+    anotherDLList.dummy->prev = anotherDLList.dummy;
+    anotherDLList.listSize = 0;
+  }
+
+  DLList<T> &operator=(const DLList<T> &anotherDLList) {
+    if (this == &anotherDLList) {
+      return *this;
+    }
+
+    Node<T> *head = dummy->next;
+    while (head != dummy) {
+      Node<T> *next = head->next;
+      delete head;
+      head = next;
+    }
+    dummy->next = dummy;
+    dummy->prev = dummy;
+    listSize = 0;
+
+    head = anotherDLList.dummy->next;
+    while (head != anotherDLList.dummy) {
+      add(listSize, head->data);
+      head = head->next;
+    }
+
+    return *this;
+  }
+
+  DLList<T> &operator=(DLList<T> &&anotherDLList) noexcept {
+    if (this == &anotherDLList) {
+      return *this;
+    }
+
+    Node<T> *head = dummy->next;
+    while (head != dummy) {
+      Node<T> *next = head->next;
+      delete head;
+      head = next;
+    }
+    delete dummy;
+
+    dummy = anotherDLList.dummy;
+    listSize = anotherDLList.listSize;
+
+    anotherDLList.dummy = new Node<T>;
+    anotherDLList.dummy->next = anotherDLList.dummy;
+    anotherDLList.dummy->prev = anotherDLList.dummy;
+    anotherDLList.listSize = 0;
+
+    return *this;
+  }
+
+  // Realization
 
   // I will place a comment over here about index
   // Index refers to the index computer programmers usually use for arrays
@@ -87,10 +175,6 @@ public:
 
     removedData = toRemove->data;
 
-    if constexpr (std::is_pointer<T>::value) {
-      delete toRemove->data;
-    }
-
     delete toRemove;
     listSize--;
 
@@ -132,4 +216,75 @@ public:
 
     std::cout << std::endl;
   }
+
+  // My funny sort
+
+  void split(Node<T> *head, Node<T> *&left, Node<T> *&right) {
+    Node<T> *slow = head;
+    Node<T> *fast = head->next;
+
+    while (fast != dummy && fast->next != dummy) {
+      slow = slow->next;
+      fast = fast->next->next;
+    }
+
+    left = head;
+    right = slow->next;
+
+    slow->next->prev = dummy;
+    slow->next = dummy;
+  }
+
+  Node<T> *merge(Node<T> *left, Node<T> *right) {
+    Node<T> *result = dummy;
+
+    while (left != dummy && right != dummy) {
+      if (left->data <= right->data) {
+        result->next = left;
+        left->prev = result;
+        result = left;
+        left = left->next;
+      } else {
+        result->next = right;
+        right->prev = result;
+        result = right;
+        right = right->next;
+      }
+    }
+
+    while (left != dummy) {
+      result->next = left;
+      left->prev = result;
+      result = left;
+      left = left->next;
+    }
+
+    while (right != dummy) {
+      result->next = right;
+      right->prev = result;
+      result = right;
+      right = right->next;
+    }
+
+    result->next = dummy;
+    dummy->prev = result;
+
+    return dummy->next;
+  }
+
+  Node<T> *mergeSort(Node<T> *head) {
+    if (head == dummy || head->next == dummy) {
+      return head;
+    }
+
+    Node<T> *left, *right;
+    split(head, left, right);
+
+    left = mergeSort(left);
+    right = mergeSort(right);
+
+    return merge(left, right);
+  }
+
+  void myMergeSort() { dummy->next = mergeSort(dummy->next); }
 };

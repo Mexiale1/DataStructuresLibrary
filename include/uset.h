@@ -1,6 +1,7 @@
 #pragma once
 
 #include <cstddef>
+#include <optional>
 
 template <typename T> class Uset {
   // Returns the number of items in the set.
@@ -10,7 +11,8 @@ template <typename T> class Uset {
   virtual bool add(const T &item) = 0;
   // Remove an item from the set, accepts the item (any data type) as a
   // parameter.
-  virtual T remove(const T &item) = 0;
+  // Changed to std::optional<T> since its easier than using null
+  virtual std::optional<T> remove(const T &item) = 0;
   // Returns true if the item exists in the set, false otherwise.
-  virtual bool find(const T &item) const = 0;
+  virtual std::optional<T> find(const T &item) const = 0;
 };

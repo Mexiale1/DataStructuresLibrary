@@ -1,3 +1,41 @@
-#include "../src/chainedhashtable.h"
+#define UPPER_LIMIT 10000000
 
-int main() { ChainedHashTable<int> test; }
+#include "../src/chainedhashtable.h"
+#include <chrono>
+#include <cstddef>
+
+int main() {
+  ChainedHashTable<int> dog;
+
+  std::chrono::time_point beforeTest = std::chrono::system_clock::now();
+
+  for (size_t i = 0; i < UPPER_LIMIT; i++) {
+    int randValue = std::rand();
+    dog.add(randValue);
+  }
+
+  std::chrono::time_point afterAdd = std::chrono::system_clock::now();
+
+  for (size_t i = 0; i < UPPER_LIMIT; i++) {
+    int randValue = std::rand();
+    dog.find(randValue);
+  }
+
+  std::chrono::time_point afterFind = std::chrono::system_clock::now();
+
+  for (size_t i = 0; i < UPPER_LIMIT / 10; i++) {
+    dog.remove(0);
+  }
+
+  std::chrono::time_point afterRemove = std::chrono::system_clock::now();
+
+  std::chrono::duration<double> add = afterAdd - beforeTest;
+  std::chrono::duration<double> sorting = afterFind - afterAdd;
+  std::chrono::duration<double> remove = afterRemove - afterFind;
+
+  std::cout << "Add: " << add.count() << "s" << std::endl;
+  std::cout << "Find: " << sorting.count() << "s" << std::endl;
+  std::cout << "Remove: " << remove.count() << "s" << std::endl;
+
+  return 0;
+}

@@ -76,4 +76,32 @@ template <typename T> class SLList : public Queue<T> {
         size_t size() const {
             return listSize;
         }
+
+// add inserts elements in sorted order instead of always adding at tail (no longer FIFO)
+        void addSorted(const T &x) {
+            Node<T>* n = new Node<T>(x);
+            if (empty() || head->data > x) {
+                n->next = head;
+                head = n;
+                if (listSize == 0) tail = n;
+            } else {
+                Node<T>* current = head;
+                while (current->next && current->next->data <= x)
+                    current = current->next;
+                n->next = current->next;
+                current->next = n;
+                if (!n->next) tail = n;
+            }
+            listSize++;
+        }
+        void printHelper() const {
+            Node<T>* current = head;
+
+            std::cout << "[ ";
+            while (current != nullptr) {
+                std::cout << current->data << " ";
+                current = current->next;
+            }
+            std::cout << "]" << std::endl;
+        }
 };
