@@ -32,7 +32,7 @@ public:
     table = std::move(newTable);
   }
 
-  size_t hash(const T &x) { return myHash(x) % table.length; }
+  size_t hash(const T &x) const { return myHash(x) % table.length; }
 
   size_t size() const { return items; }
 

@@ -37,6 +37,14 @@ template <typename T> struct array {
     return arr[index];
   }
 
+  const T &operator[](size_t index) const {
+    if (index >= length) {
+      throw std::out_of_range("Out of bounds\n");
+    }
+
+    return arr[index];
+  }
+
   array<T> &operator=(const array<T> &anotherArr) {
     if (this == &anotherArr) {
       return *this;

@@ -1,4 +1,5 @@
 # DataStructuresLibrary
+
 A Library of Data Structures discovered through the CMSC 123 course.
 
 # Instructions
@@ -7,19 +8,19 @@ Bla Bla run any `.cpp` file bla bla manual input or use the `.txt` file containi
 
 We have format:
 
-| Input | Description        |
-|-------|--------------------|
-| A     | Add elements       |
-| B     | Remove elements    |
-| C     | Shuffles elements  |
-| D     | Breakdance         |
-| E     | Backflip           |
-| F     | End program        |
+| Input | Description       |
+| ----- | ----------------- |
+| A     | Add elements      |
+| B     | Remove elements   |
+| C     | Shuffles elements |
+| D     | Breakdance        |
+| E     | Backflip          |
+| F     | End program       |
 
 # Benchmarking
 
 | Data Structure | Speed |
-|----------------|-------|
+| -------------- | ----- |
 | A              | XXms  |
 | B              | XXms  |
 | C              | XXms  |
@@ -30,6 +31,7 @@ We have format:
 # Contribution
 
 Thank you very much:
+
 - dobidobop (Dave Gagani)
 - Piyaa-bot (Feahmar Bentazal)
 
