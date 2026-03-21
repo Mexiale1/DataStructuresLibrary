@@ -125,7 +125,7 @@ We have format:
 Thank you very much:
 - Mexiale1 (Jesse Michael Mazo)
 - dobidobop (Dave Christian Gagani)
-- Piyaa-bot (Feahmar Jean Bentazal)
+- newJean06 (Feahmar Jean Bentazal)
 
 # References
 - If there are any, insert here.
