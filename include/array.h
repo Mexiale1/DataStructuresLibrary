@@ -12,7 +12,7 @@ template <typename T> struct array {
     length = n;
   }
 
-  array(array<T> &anotherArr) {
+  array(const array<T> &anotherArr) {
     length = anotherArr.length;
     arr = new T[length];
 
@@ -21,7 +21,7 @@ template <typename T> struct array {
     }
   }
 
-  array(array<T> &&anotherTempArr) {
+  array(array<T> &&anotherTempArr) noexcept {
     arr = anotherTempArr.arr;
     length = anotherTempArr.length;
     anotherTempArr.arr = nullptr;
@@ -37,7 +37,7 @@ template <typename T> struct array {
     return arr[index];
   }
 
-  array<T> &operator=(array<T> &anotherArr) {
+  array<T> &operator=(const array<T> &anotherArr) {
     if (this == &anotherArr) {
       return *this;
     }
@@ -46,12 +46,17 @@ template <typename T> struct array {
       delete[] arr;
     }
 
-    arr = anotherArr.arr;
     length = anotherArr.length;
+    arr = new T[length];
+
+    for (size_t i = 0; i < length; i++) {
+      arr[i] = anotherArr.arr[i];
+    }
+
     return *this;
   }
 
-  array<T> &operator=(array<T> &&anotherArr) {
+  array<T> &operator=(array<T> &&anotherArr) noexcept {
     if (this == &anotherArr) {
       return *this;
     }
@@ -61,12 +66,14 @@ template <typename T> struct array {
     }
 
     arr = anotherArr.arr;
-    anotherArr = nullptr;
     length = anotherArr.length;
+
+    anotherArr.arr = nullptr;
+    anotherArr.length = 0;
     return *this;
   }
 
   T *begin() { return arr; }
 
-  T end() { return arr + length; }
+  T *end() { return arr + length; }
 };

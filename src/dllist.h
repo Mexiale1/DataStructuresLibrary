@@ -16,11 +16,95 @@ private:
   size_t listSize;
 
 public:
-  DLList() {
+  DLList() : listSize(0) {
     dummy = new Node<T>;
     dummy->next = dummy;
     dummy->prev = dummy;
+  }
+
+  ~DLList() {
+    Node<T> *head = dummy->next, *next;
+
+    while (head != dummy) {
+      next = head->next;
+      delete head;
+      head = next;
+    }
+
+    delete dummy;
+  }
+
+  // Just adding the rule of five because whoever thought of this is so funny
+
+  DLList(const DLList<T> &anotherDLList) : listSize(0) {
+    dummy = new Node<T>;
+    dummy->next = dummy;
+    dummy->prev = dummy;
+
+    Node<T> *head = anotherDLList.dummy->next;
+
+    while (head != anotherDLList.dummy) {
+      add(listSize, head->data);
+      head = head->next;
+    }
+  }
+
+  DLList(DLList<T> &&anotherDLList) noexcept {
+    dummy = anotherDLList.dummy;
+    listSize = anotherDLList.size();
+
+    anotherDLList.dummy = new Node<T>;
+    anotherDLList.dummy->next = anotherDLList.dummy;
+    anotherDLList.dummy->prev = anotherDLList.dummy;
+    anotherDLList.listSize = 0;
+  }
+
+  DLList<T> &operator=(const DLList<T> &anotherDLList) {
+    if (this == &anotherDLList) {
+      return *this;
+    }
+
+    Node<T> *head = dummy->next;
+    while (head != dummy) {
+      Node<T> *next = head->next;
+      delete head;
+      head = next;
+    }
+    dummy->next = dummy;
+    dummy->prev = dummy;
     listSize = 0;
+
+    head = anotherDLList.dummy->next;
+    while (head != anotherDLList.dummy) {
+      add(listSize, head->data);
+      head = head->next;
+    }
+
+    return *this;
+  }
+
+  DLList<T> &operator=(DLList<T> &&anotherDLList) noexcept {
+    if (this == &anotherDLList) {
+      return *this;
+    }
+
+    Node<T> *head = dummy->next;
+    while (head != dummy) {
+      Node<T> *next = head->next;
+      delete head;
+      head = next;
+    }
+    delete dummy;
+
+    dummy = anotherDLList.dummy;
+    listSize = anotherDLList.listSize;
+
+    anotherDLList.dummy = new Node<T>;
+    anotherDLList.dummy->next = anotherDLList.dummy;
+    anotherDLList.dummy->prev = anotherDLList.dummy;
+    anotherDLList.listSize = 0;
+
+    return *this;
   }
 
   // I will place a comment over here about index
@@ -86,10 +170,6 @@ public:
     toRemove->next->prev = toRemove->prev;
 
     removedData = toRemove->data;
-
-    if constexpr (std::is_pointer<T>::value) {
-      delete toRemove->data;
-    }
 
     delete toRemove;
     listSize--;
