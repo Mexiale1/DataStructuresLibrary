@@ -1,38 +1,37 @@
-
 #pragma once
 
 #include "../include/sset.h"
 #include <cstdlib>
 #include <cstddef>
-#include <iostream>
+#include <ctime>
 
 template <typename T>
 struct Node {
     T data;
     int height;
     Node** next;
-    
-    Node(T input, int h) {
-        data = input;
+
+    Node(T val, int h) {
+        data = val;
         height = h;
-        next = new Node*[h + 1]; // array of pointers to next nodes at each level
+        next = new Node*[h + 1];
         for (int i = 0; i <= h; i++) {
             next[i] = nullptr;
         }
     }
 
     ~Node() {
-        delete[] next; 
+        delete[] next;
     }
 };
 
-template <typename T> class SkiplistSSet : public SortedSet<T> {
+template <typename T> class Skiplist : public SortedSet<T> {
 private:
     static const int MAXH = 32;
 
     Node<T>* sentinel;
-    int maxHeight;  // current max height
-    size_t n;       // number of elements
+    int maxHeight;
+    size_t n;
 
     int compare2(const T& a, const T& b) const {
         if (a < b) return -1;
@@ -53,8 +52,10 @@ private:
 
     Node<T>* findPredNode(const T& x) const {
         Node<T>* u = sentinel;
+
         for (int r = maxHeight; r >= 0; r--) {
-            while (u->next[r] != nullptr && compare2(u->next[r]->data, x) < 0) {
+            while (u->next[r] != nullptr &&
+                   compare2(u->next[r]->data, x) < 0) {
                 u = u->next[r];
             }
         }
@@ -62,13 +63,15 @@ private:
     }
 
 public:
-    SkiplistSSet() {
+    Skiplist() {
         maxHeight = 0;
         n = 0;
-        sentinel = new Node<T>(T(), MAXH);
+        sentinel = new Node<T>(T(), MAXH - 1);
+
+        srand(time(nullptr)); // seed randomness
     }
 
-    ~SkiplistSSet() {
+    ~Skiplist() {
         Node<T>* u = sentinel;
         while (u != nullptr) {
             Node<T>* next = u->next[0];
@@ -81,7 +84,7 @@ public:
         return n;
     }
 
-    void compare(T &x, T &y) override {}
+    void compare(T &x, T &y) override { }
 
     T find(const T &x) const override {
         Node<T>* u = findPredNode(x);
@@ -91,16 +94,15 @@ public:
             return u->next[0]->data;
         }
 
-        return T();
+        return T(); 
     }
 
     bool add(const T &x) override {
-        Node<T>* stack[MAXH + 1];
+        Node<T>* stack[MAXH];
         Node<T>* u = sentinel;
 
         int h = maxHeight;
 
-        // build stack of predecessors
         for (int r = h; r >= 0; r--) {
             while (u->next[r] != nullptr &&
                    compare2(u->next[r]->data, x) < 0) {
@@ -108,30 +110,24 @@ public:
             }
             stack[r] = u;
         }
-
-        // check for duplicates
         if (u->next[0] != nullptr &&
             compare2(u->next[0]->data, x) == 0) {
             return false;
         }
 
         int newH = pickHeight();
-        
         Node<T>* w = new Node<T>(x, newH);
 
-        if (newH > h) {
-            for (int i = h + 1; i <= newH; i++) {
+        if (newH > maxHeight) {
+            for (int i = maxHeight + 1; i <= newH; i++) {
                 stack[i] = sentinel;
             }
             maxHeight = newH;
-            h = newH;
         }
-
         for (int i = 0; i <= newH; i++) {
             w->next[i] = stack[i]->next[i];
             stack[i]->next[i] = w;
         }
-
         n++;
         return true;
     }
@@ -140,36 +136,31 @@ public:
         Node<T>* u = sentinel;
         Node<T>* del = nullptr;
         bool found = false;
-
-        int h = maxHeight;
-
-        for (int r = h; r >= 0; r--) {
+        for (int r = maxHeight; r >= 0; r--) {
             while (u->next[r] != nullptr &&
                    compare2(u->next[r]->data, x) < 0) {
                 u = u->next[r];
             }
-
             if (u->next[r] != nullptr &&
                 compare2(u->next[r]->data, x) == 0) {
 
-                if (!found) del = u->next[r]; 
-                found = true;
-
-                u->next[r] = u->next[r]->next[r];
-
-                if (u == sentinel && u->next[r] == nullptr) {
-                    maxHeight--;
+                if (!found) {
+                    del = u->next[r];
+                    found = true;
                 }
+                u->next[r] = u->next[r]->next[r];
             }
         }
-
         if (found) {
             T val = del->data;
             delete del;
             n--;
+            while (maxHeight > 0 &&
+                   sentinel->next[maxHeight] == nullptr) {
+                maxHeight--;
+            }
             return val;
         }
-
-        return T();
+        return T(); 
     }
 };
