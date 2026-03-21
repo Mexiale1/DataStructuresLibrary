@@ -13,11 +13,13 @@ Implementation: ArrayStack
 Implementation: SLList (Singly Linked List)
 - Deque (Double-ended Queue)
 Implementation: ArrayDeque
+
 **Lists**
 - Array-based List
 Implemented through ArrayDeque
 - Doubly Linked List
 Implementation: DLList
+
 **Sets**
 - Unsorted Set
 Implementation: ChainedHashTable
@@ -25,6 +27,7 @@ Implementation: ChainedHashTable
 Implementations:
 Skiplist
 RBTreeSet (Red-Black Tree)
+
 **Graph**
 - Adjacency Matrix Representation
 Implementation: AdjacencyMatrix
