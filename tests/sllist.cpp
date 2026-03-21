@@ -28,6 +28,7 @@ int main() {
         q.printHelper();
     }
   
+    cout << "\n=====Test for Twist Added=====\n";
     // (twist) addSorted() demo 
     cout << "\nAdding (sorted): 25\n";
     q.addSorted(25);
@@ -48,6 +49,7 @@ int main() {
     cout << "Adding (sorted): 5\n";
     q.addSorted(5);
     q.printHelper();
+    cout << "\n=============================\n";
 
     cout << "\nRemoving all (FIFO order):\n";
     while (!q.empty()) {
