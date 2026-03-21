@@ -94,4 +94,14 @@ template <typename T> class SLList : public Queue<T> {
             }
             listSize++;
         }
+        void printHelper() const {
+            Node<T>* current = head;
+
+            std::cout << "[ ";
+            while (current != nullptr) {
+                std::cout << current->data << " ";
+                current = current->next;
+            }
+            std::cout << "]" << std::endl;
+        }
 };
