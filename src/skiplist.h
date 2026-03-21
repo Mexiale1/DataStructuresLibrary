@@ -67,8 +67,6 @@ public:
         maxHeight = 0;
         n = 0;
         sentinel = new Node<T>(T(), MAXH - 1);
-
-        srand(time(nullptr)); // seed randomness
     }
 
     ~Skiplist() {
@@ -162,5 +160,122 @@ public:
             return val;
         }
         return T(); 
+    }
+
+    // ======================================
+    // (Twist) REVERSE SKIPLIST FUNCTIONS
+    // ======================================
+
+    // insert x in reverse order (descending)
+    bool add2(const T &x) {
+        Node<T>* stack[MAXH];
+        Node<T>* u = sentinel;
+        int h = maxHeight;
+
+        for (int r = h; r >= 0; r--) {
+            while (u->next[r] != nullptr &&
+                compare2(u->next[r]->data, x) > 0) {
+                u = u->next[r];
+            }
+            stack[r] = u;
+        }
+
+        if (u->next[0] != nullptr &&
+            compare2(u->next[0]->data, x) == 0) {
+            return false;
+        }
+
+        int newH = pickHeight();
+        Node<T>* w = new Node<T>(x, newH);
+
+        if (newH > maxHeight) {
+            for (int i = maxHeight + 1; i <= newH; i++) {
+                stack[i] = sentinel;
+            }
+            maxHeight = newH;
+        }
+        for (int i = 0; i <= newH; i++) {
+            w->next[i] = stack[i]->next[i];
+            stack[i]->next[i] = w;
+        }
+
+        n++;
+        return true;
+    }
+
+    // find x in reverse order (descending)
+    T find2(const T &x) const {
+        Node<T>* u = sentinel;
+
+        for (int r = maxHeight; r >= 0; r--) {
+            while (u->next[r] != nullptr &&
+                compare2(u->next[r]->data, x) > 0) {
+                u = u->next[r];
+            }
+        }
+
+        if (u->next[0] != nullptr &&
+            compare2(u->next[0]->data, x) == 0) {
+            return u->next[0]->data;
+        }
+
+        return T(); 
+    }
+
+    // remove x in reverse order (descending)
+    T remove2(const T &x) {
+        Node<T>* u = sentinel;
+        Node<T>* del = nullptr;
+        bool found = false;
+
+        for (int r = maxHeight; r >= 0; r--) {
+            while (u->next[r] != nullptr &&
+                compare2(u->next[r]->data, x) > 0) {
+                u = u->next[r];
+            }
+            if (u->next[r] != nullptr &&
+                compare2(u->next[r]->data, x) == 0) {
+
+                if (!found) {
+                    del = u->next[r];
+                    found = true;
+                }
+                u->next[r] = u->next[r]->next[r];
+            }
+        }
+
+        if (found) {
+            T val = del->data;
+            delete del;
+            n--;
+            while (maxHeight > 0 &&
+                sentinel->next[maxHeight] == nullptr) {
+                maxHeight--;
+            }
+            return val;
+        }
+
+        return T(); 
+    }
+
+    //print functions for testing
+    void print() const {
+        Node<T>* u = sentinel->next[0]; 
+        std::cout << "Level 0: ";
+        while (u != nullptr) {
+            std::cout << u->data << " -> ";
+            u = u->next[0];
+        }
+        std::cout << "nullptr\n";
+    }
+
+    void printReverse() const {
+        Node<T>* u = sentinel->next[0]; 
+        std::cout << "Level 0 (descending view): ";
+        while (u != nullptr) {
+            std::cout << u->data << " -> ";
+            u = u->next[0];
+        }
+        std::cout << "nullptr\n";
     }
 };
