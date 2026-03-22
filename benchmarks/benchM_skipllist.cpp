@@ -5,7 +5,7 @@
 
 using namespace std;
 
-const size_t UPPER_LIMIT = 100000; //adjust for benchmarking
+const size_t UPPER_LIMIT = 100000; 
 
 int main() {
     Skiplist<int> s;
