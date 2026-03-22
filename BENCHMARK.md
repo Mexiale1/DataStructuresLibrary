@@ -180,13 +180,7 @@ Remove: (max) 0.018495s (min) 0.009615s (avg) 0.0119735s
   _Note:_ The results were averaged by 10 test cases.
 
   ```
-  Minimum time (add): 0.508484s
-  Maximum time (add): 0.674754s
-  Minimum time (find): 0.153739s
-  Maximum time (find): 0.177382s
-  Minimum time (remove): 0.156726s
-  Maximum time (remove): 0.17758s
-  Average time (add): 0.564023s
-  Average time (find): 0.161988s
-  Average time (remove): 0.164313s
+  Add:    (max) 0.674754s (min) 0.508484s (avg) 0.564023s
+  Find:   (max) 0.177382s (min) 0.153739s (avg) 0.161988s
+  Remove: (max) 0.156726s (min) 0..17758s (avg) 0.164313s
   ```
