@@ -18,7 +18,7 @@ All ADTs are benchmarked under the same conditions to ensure consistency and com
 
 Note: The benchmarking numbers may by a result of one or multiple runs, which is decided through spread of results. This will be mentioned in the Detailed Benchmarks section.
 
-$\text{Note}^2$: Just as you would expect, some Data structures will not test all operations due to the nature of the ADT it realizes.
+Note2: Just as you would expect, some Data structures will not test all operations due to the nature of the ADT it realizes.
 
 1. **Insertion** – adding elements to the data structure  
    _(Insert `n` integer values into each ADT)_
@@ -38,11 +38,11 @@ $\text{Note}^2$: Just as you would expect, some Data structures will not test al
 | FILO QUEUE     | arraystack.cpp                         | 0.001028s | 0.000987s |           |
 | FIFO QUEUE     | sllist.cpp                             | 0.006520s | 0.003023s |           |
 | PRIORITY QUEUE | (to be implemented)                    |           |           |           |
-| DEQUE          | arraydeque.cpp                         |           |           |           |
+| DEQUE          | arraydeque.cpp (`n` = 10,000,000)      | 0.238120s | 0.115319s |     -     |     -     |
 | LIST           | dllist.cpp                             | 12.39130s | 13.10700s |     -     | 0.022589s |
 | SORTED SET     | skiplist.cpp                           | 0.033042s | 0.032600s | 0.037054s |
 | SORTED SET     | redblacktrees.cpp                      | 0.024520s | 0.010506s | 0.015013s |
-| UNSORTED SET   | chainedhashtable.cpp ($n$ = 1,000,000) | 0.564023s | 0.164313s | 0.161988s |
+| UNSORTED SET   | chainedhashtable.cpp (`n` = 1,000,000) | 0.564023s | 0.164313s | 0.161988s |
 | GRAPH          | adjacencymatrix.cpp                    |           |           |           |
 
 ---
@@ -58,7 +58,7 @@ Additional operations specific to each data structure are also evaluated.
 | FILO QUEUE     | arraystack.cpp       |                                                                 |
 | FIFO QUEUE     | sllist.cpp           | enqueue / add, dequeue / remove, add (Sorted) (unique)          |
 | PRIORITY QUEUE | (to be implemented)  |                                                                 |
-| DEQUE, LIST    | arraydeque.cpp       |                                                                 |
+| DEQUE, LIST    | arraydeque.cpp       | addFirst, addLast, removeFirst, removeLast                      |
 | LIST           | dllist.cpp           | add, remove, sort (unique)                                      |
 | SORTED SET     | skiplist.cpp         | add, remove, find, add(Reverse), remove(Reverse), find(Reverse) |
 | SORTED SET     | redblacktrees.cpp    | add, remove, find                                               |
@@ -86,6 +86,22 @@ Additional operations specific to each data structure are also evaluated.
   _Note:_ This function is independent; the ADT itself still follows FIFO behavior.
 
 <img width="299" height="158" alt="image" src="https://github.com/user-attachments/assets/db43992b-08ca-4249-882d-722552ebd8ec" />
+
+---
+
+### LIST & DEQUE (arraydeque.cpp)
+
+- Insert: `addFirst(data)`, `addLast(data)`
+  - Half of `n` calls `addFirst(data)` method, while the other calls `addLast(data)`
+- Delete: `removeFirst()`, `removeLast()`
+  - Similar to Insert, each method is called for half of `n`
+
+Note: The result is an average of 10 repeated runs.
+
+```
+Add: (max) 0.265644s (min) 0.229743s (avg) 0.23812s
+Remove: (max) 0.124376s (min) 0.109699s (avg) 0.115319s
+```
 
 ---
 
