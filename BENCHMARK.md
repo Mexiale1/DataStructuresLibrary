@@ -98,7 +98,7 @@ Additional operations specific to each data structure are also evaluated.
 - Unique: `mySort()`:
   - Using the `Merge Sort` algorithm
 
-  _Note:_ The results were averaged by 5 test cases due to variance. This variance may be due to the randomized indexing. Set only to 5, as 10 takes to long and crashes the program.
+  _Note:_ The results were averaged by 5 test cases due to variance. This variance may be due to the randomized indexing. Set only to 5 test cases, as 10 takes to long and crashes the program.
 
 ```
 Add: (max) 13.1311s (min) 11.3485s (avg) 12.3913s
