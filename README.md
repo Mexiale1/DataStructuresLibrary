@@ -64,7 +64,7 @@ The goal of this project is to understand how common data structures work intern
 
 # Instructions
 Using g++, we compile a test file using: 
-```
+```shell
 g++ tests/[Any Data Structure].cpp -o test 
 ./test
 ```
@@ -90,7 +90,7 @@ Basic benchmarking is included to measure performance of operations such as:
 - Unique operations
 
 Example benchmark (ArrayStack):
-```
+```c
 for (int i = 0; i < 1000000; i++) {
     st.push(i);
 }
