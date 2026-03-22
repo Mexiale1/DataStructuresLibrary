@@ -37,12 +37,12 @@ Note2: Just as you would expect, some Data structures will not test all operatio
 | -------------- | -------------------------------------- | :--------: | :--------: | :--------: | :--------: |
 | FILO QUEUE     | arraystack.cpp                         | 0.0014107s | 0.0011280s |      -     |      -     |
 | FIFO QUEUE     | sllist.cpp                             | 0.0038425s | 0.0027372s |      -     | 19.862600s |
-| PRIORITY QUEUE | (to be implemented)                    |            |            |      -     |      -     |
+| PRIORITY QUEUE | (to be implemented)                    |            |            |            |            |
 | DEQUE          | arraydeque.cpp (`n` = 10,000,000)      | 0.2381200s | 0.1153190s |      -     |      -     |
 | LIST           | dllist.cpp                             | 12.391300s | 13.107000s |      -     | 0.022589s  |
 | SORTED SET     | skiplist.cpp                           | 0.0323282s | 0.0252603s | 0.0316317s | 0.0315943s |
-| SORTED SET     | redblacktrees.cpp                      | 0.0188939s | 0.0119735s | 0.0137733s |
-| UNSORTED SET   | chainedhashtable.cpp (`n` = 1,000,000) | 0.5640230s | 0.1643130s | 0.1619880s |
+| SORTED SET     | redblacktrees.cpp                      | 0.0188939s | 0.0119735s | 0.0137733s |      -     |
+| UNSORTED SET   | chainedhashtable.cpp (`n` = 1,000,000) | 0.5640230s | 0.1643130s | 0.1619880s |      -     |
 | GRAPH          | adjacencymatrix.cpp                    |            |            |            |
 
 ## Detailed Benchmarks Per ADT
@@ -139,7 +139,8 @@ Remove: (max) 13.3233s (min) 12.954s (avg) 13.107s
   - `data` is generated using std::rand()
 - Unique: `add2(data)`, `remove2(data)`, `find2(data))`
   - Implements a skiplist that maintains elements in descending order.
-   _Note:_ These functions are independent; the ADT itself still follows standard Sorted Set behavior.
+  - The highest time
+      _Note:_ These functions are independent; the ADT itself still follows standard Sorted Set behavior.
 
 _Note:_ The result is an average of 10 repeated runs.
 
