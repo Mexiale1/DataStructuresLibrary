@@ -32,8 +32,8 @@ int main() {
 
     cout << "Operation           Time (s)\n";
     cout << "----------------------------\n";
-    cout << "Push (Add)       " << timeAdd.count() << " s\n";
-    cout << "Pop (Remove)     " << timeRemove.count() << " s\n";
+    cout << "Push:               " << timeAdd.count() << " s\n";
+    cout << "Pop:                " << timeRemove.count() << " s\n";
     cout << "\n";
 
     return 0;
