@@ -78,9 +78,9 @@ Additional operations specific to each data structure are also evaluated.
 - Insert: `add()`
 - Delete: `remove()`
 - Search: `find()`
--Additional Functions (Twist):
+- Additional Functions (Twist):
   - Reverse Skiplist (Descending Order) – `add2()`, `remove2()`, `find2()`  
-  Implements a skiplist that maintains elements in descending order.
+     - Implements a skiplist that maintains elements in descending order.
 
   *Note:* These functions are independent; the ADT itself still follows standard Sorted Set behavior.
 
