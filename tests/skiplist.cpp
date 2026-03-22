@@ -16,11 +16,9 @@ int main() {
     vector<double> add2Times, find2Times, remove2Times;
 
     for (int r = 0; r < RUNS; r++) {
-
         vector<int> data;
         for (size_t i = 0; i < UPPER_LIMIT; i++) {
-            data.push_back(rand());
-        }
+            data.push_back(rand());       }
 
         Skiplist<int> s;
 
