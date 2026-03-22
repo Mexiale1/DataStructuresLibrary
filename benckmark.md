@@ -61,6 +61,12 @@ Additional operations specific to each data structure are also evaluated.
 | GRAPH          | adjacencymatrix.cpp  |                                                    |
 
 
+### FILO QUEUE (arraystack.cpp)
+- Insert: `push()`
+- Remove: `pop()`
+
+<img width="288" height="149" alt="image" src="https://github.com/user-attachments/assets/5ce357b8-5ff1-4a0f-9bb5-8e009c22da5c" />
+
 ### FIFO QUEUE (sllist.cpp)
 
 - Insert: `enqueue()` / `add()`
