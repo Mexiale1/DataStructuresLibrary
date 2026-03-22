@@ -29,13 +29,13 @@ All ADTs are benchmarked under the same conditions to ensure consistency and com
 
 | ADT            | Data Structure       | Insert        | Delete       | Search |
 | -------------- | -------------------- | ------------- | ------------ | ------ |
-| FILO QUEUE     | arraystack.cpp       |               |              |        |
-| FIFO QUEUE     | sllist.cpp           | 0.007080s     | 0.006000s    |        |
+| FILO QUEUE     | arraystack.cpp       | 0.002045s     | 0.001007s    |        |
+| FIFO QUEUE     | sllist.cpp           | 0.005570s     | 0.002014s    |        |
 | PRIORITY QUEUE | (to be implemented)  |               |              |        |
 | DEQUE          | arraydeque.cpp       |               |              |        |
 | LIST           | dllist.cpp           | 30s           | 30s          |        |
-| SORTED SET     | skiplist.cpp         | 0.312762s     | 0.054806s    | 0.320001s   |
-| SORTED SET     | redblacktrees.cpp    | 0.018605s     | 0.009507s    | 0.030595s   |
+| SORTED SET     | skiplist.cpp         | 0.330321s     | 0.054175s    | 0.323220s   |
+| SORTED SET     | redblacktrees.cpp    | 0.019775s     | 0.014997s    | 0.007546s   |
 | UNSORTED SET   | chainedhashtable.cpp |               |              |        |
 | GRAPH          | adjacencymatrix.cpp  |               |              |        |
 
@@ -65,7 +65,9 @@ Additional operations specific to each data structure are also evaluated.
 - Insert: `push()`
 - Remove: `pop()`
 
-<img width="288" height="149" alt="image" src="https://github.com/user-attachments/assets/5ce357b8-5ff1-4a0f-9bb5-8e009c22da5c" />
+<img width="288" height="157" alt="image" src="https://github.com/user-attachments/assets/2414d7b4-4bb1-488d-9209-43fcbfe8230f" />
+
+--
 
 ### FIFO QUEUE (sllist.cpp)
 
@@ -76,7 +78,7 @@ Additional operations specific to each data structure are also evaluated.
 
   *Note:* This function is independent; the ADT itself still follows FIFO behavior.
 
-<img width="225" height="135" alt="image" src="https://github.com/user-attachments/assets/62d6aaf2-8073-4378-a7e8-20406a01b5e8" />
+<img width="262" height="172" alt="image" src="https://github.com/user-attachments/assets/53756807-6ad2-4966-9140-0afccf3340ef" />
 
 ---
 
@@ -90,8 +92,8 @@ Additional operations specific to each data structure are also evaluated.
         - Implements a skiplist that maintains elements in descending order.
 
   *Note:* These functions are independent; the ADT itself still follows standard Sorted Set behavior.
-
-<img width="224" height="195" alt="image" src="https://github.com/user-attachments/assets/3f1e7bc8-b588-43b1-a023-b3fe01121892" />
+  
+<img width="264" height="241" alt="image" src="https://github.com/user-attachments/assets/4a9d6dda-7cd3-44ff-b6af-7d1ab12f9c7e" />
 
 ---
 
@@ -101,4 +103,5 @@ Additional operations specific to each data structure are also evaluated.
 - Delete: `remove()`
 - Search: `find()`
 
-<img width="264" height="139" alt="image" src="https://github.com/user-attachments/assets/9ccfbbc8-4ff6-4e73-88a2-e4993f164b9b" />
+<img width="264" height="175" alt="image" src="https://github.com/user-attachments/assets/185fa6e5-3b82-4373-906f-9e05989c66d8" />
+
