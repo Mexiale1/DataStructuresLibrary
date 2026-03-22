@@ -9,16 +9,16 @@ All ADTs are benchmarked under the same conditions to ensure consistency and com
 **Benchmark Setup:**
 
 - Number of elements as `n`: 100,000 (Unless specified)
-- Data type: integers
-- Data distribution: random values
-- Timing method: `std::chrono`
+- Data type `T`: integers
+- Data distribution: random values (through `std::rand()`)
+- Timing method: Date and Time library (using `<chrono>`)
 - Note: All benchmark files are located in the `benchmarks` folder.
 
 **Operations Measured:**
 
 Note: The benchmarking numbers may by a result of one or multiple runs, which is decided through spread of results. This will be mentioned in the Detailed Benchmarks section.
 
-Note$_2$: Just as you would expect, some Data structres will not require all operations due to the nature of the ADT it realizes.
+$\text(Note)^2$: Just as you would expect, some Data structures will not require all operations due to the nature of the ADT it realizes.
 
 1. **Insertion** – adding elements to the data structure  
    _(Insert `n` integer values into each ADT)_
@@ -56,13 +56,13 @@ Additional operations specific to each data structure are also evaluated.
 | ADT            | Data Structure       | Functions Tested                                                |
 | -------------- | -------------------- | --------------------------------------------------------------- |
 | FILO QUEUE     | arraystack.cpp       |                                                                 |
-| FIFO QUEUE     | sllist.cpp           | enqueue / add, dequeue / remove, add (Sorted)                   |
+| FIFO QUEUE     | sllist.cpp           | enqueue / add, dequeue / remove, add (Sorted) (unique)          |
 | PRIORITY QUEUE | (to be implemented)  |                                                                 |
-| DEQUE          | arraydeque.cpp       |                                                                 |
-| LIST           | dllist.cpp           |                                                                 |
+| DEQUE, LIST    | arraydeque.cpp       |                                                                 |
+| LIST           | dllist.cpp           | add, remove, sort (unique)                                      |
 | SORTED SET     | skiplist.cpp         | add, remove, find, add(Reverse), remove(Reverse), find(Reverse) |
 | SORTED SET     | redblacktrees.cpp    | add, remove, find                                               |
-| UNSORTED SET   | chainedhashtable.cpp |                                                                 |
+| UNSORTED SET   | chainedhashtable.cpp | add, remove, find                                               |
 | GRAPH          | adjacencymatrix.cpp  |                                                                 |
 
 ---
@@ -86,6 +86,23 @@ Additional operations specific to each data structure are also evaluated.
   _Note:_ This function is independent; the ADT itself still follows FIFO behavior.
 
 <img width="299" height="158" alt="image" src="https://github.com/user-attachments/assets/db43992b-08ca-4249-882d-722552ebd8ec" />
+
+---
+
+### LIST (dllist.cpp)
+
+- Insert: `add(index, data)`
+  - For this test, both the `index` and `data` are randomized using `std::rand()`
+- Delete: `remove(index)`
+  - For this test, `index` is randomized using the same function
+- Unique: `mySort()`:
+  - Using the `Merge Sort` algorithm
+
+  _Note:_ The results were averaged by 5 test cases due to variance. This variance may be due to the randomized indexing.
+
+```
+placeholder
+```
 
 ---
 
