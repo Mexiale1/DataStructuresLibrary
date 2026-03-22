@@ -20,8 +20,7 @@ int main() {
 
         vector<int> data;
         for (size_t i = 0; i < UPPER_LIMIT; i++) {
-            data.push_back(rand());
-        }
+            data.push_back(rand()); }
 
         RBTreeSet<int> tree;
 
