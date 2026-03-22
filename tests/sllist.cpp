@@ -17,7 +17,6 @@ int main() {
     vector<double> uniqueTimes;
 
     for (int r = 0; r < RUNS; r++) {
-
         vector<int> data;
         for (size_t i = 0; i < UPPER_LIMIT; i++) {
             data.push_back(rand());
@@ -26,19 +25,13 @@ int main() {
         SLList<int> q;
 
         auto startAdd = chrono::high_resolution_clock::now();
-
         for (size_t i = 0; i < UPPER_LIMIT; i++) {
-            q.add(data[i]);
-        }
-
+            q.add(data[i]); }
         auto endAdd = chrono::high_resolution_clock::now();
 
         auto startRemove = chrono::high_resolution_clock::now();
-
         while (!q.empty()) {
-            q.remove();
-        }
-
+            q.remove();}
         auto endRemove = chrono::high_resolution_clock::now();
 
         addTimes.push_back(chrono::duration<double>(endAdd - startAdd).count());
@@ -47,11 +40,8 @@ int main() {
         SLList<int> u;
 
         auto startUnique = chrono::high_resolution_clock::now();
-
         for (size_t i = 0; i < UPPER_LIMIT; i++) {
-            u.addSorted(data[i]);
-        }
-
+            u.addSorted(data[i]); }
         auto endUnique = chrono::high_resolution_clock::now();
 
         uniqueTimes.push_back(chrono::duration<double>(endUnique - startUnique).count());
