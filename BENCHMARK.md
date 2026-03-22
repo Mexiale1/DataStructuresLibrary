@@ -29,7 +29,7 @@ All ADTs are benchmarked under the same conditions to ensure consistency and com
 
 | ADT            | Data Structure       | Insert        | Delete       | Search |
 | -------------- | -------------------- | ------------- | ------------ | ------ |
-| FILO QUEUE     | arraystack.cpp       | 0.002045s     | 0.001007s    |        |
+| FILO QUEUE     | arraystack.cpp       | 0.001028s     | 0.000987s    |        |
 | FIFO QUEUE     | sllist.cpp           | 0.005570s     | 0.002014s    |        |
 | PRIORITY QUEUE | (to be implemented)  |               |              |        |
 | DEQUE          | arraydeque.cpp       |               |              |        |
@@ -44,7 +44,6 @@ All ADTs are benchmarked under the same conditions to ensure consistency and com
 ## Detailed Benchmarks Per ADT
 
 Additional operations specific to each data structure are also evaluated.
-
 
 ## Summary of Functions Per ADT
 
@@ -66,7 +65,7 @@ Additional operations specific to each data structure are also evaluated.
 - Insert: `push()`
 - Remove: `pop()`
 
-<img width="288" height="157" alt="image" src="https://github.com/user-attachments/assets/2414d7b4-4bb1-488d-9209-43fcbfe8230f" />
+<img width="289" height="159" alt="image" src="https://github.com/user-attachments/assets/e5052182-649b-4e1a-8285-7df141025a81" />
 
 ---
 
