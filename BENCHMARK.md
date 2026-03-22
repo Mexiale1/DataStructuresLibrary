@@ -30,12 +30,12 @@ All ADTs are benchmarked under the same conditions to ensure consistency and com
 | ADT            | Data Structure       | Insert        | Delete       | Search |
 | -------------- | -------------------- | ------------- | ------------ | ------ |
 | FILO QUEUE     | arraystack.cpp       | 0.001028s     | 0.000987s    |        |
-| FIFO QUEUE     | sllist.cpp           | 0.005570s     | 0.002014s    |        |
+| FIFO QUEUE     | sllist.cpp           | 0.006520s     | 0.003023s    |        |
 | PRIORITY QUEUE | (to be implemented)  |               |              |        |
 | DEQUE          | arraydeque.cpp       |               |              |        |
 | LIST           | dllist.cpp           | 30s           | 30s          |        |
-| SORTED SET     | skiplist.cpp         | 0.330321s     | 0.054175s    | 0.323220s   |
-| SORTED SET     | redblacktrees.cpp    | 0.019775s     | 0.014997s    | 0.007546s   |
+| SORTED SET     | skiplist.cpp         | 0.033042s     | 0.032600s    | 0.037054s   |
+| SORTED SET     | redblacktrees.cpp    | 0.024520s     | 0.010506s    | 0.015013s   |
 | UNSORTED SET   | chainedhashtable.cpp |               |              |        |
 | GRAPH          | adjacencymatrix.cpp  |               |              |        |
 
@@ -78,7 +78,7 @@ Additional operations specific to each data structure are also evaluated.
 
   *Note:* This function is independent; the ADT itself still follows FIFO behavior.
 
-<img width="265" height="181" alt="image" src="https://github.com/user-attachments/assets/d96340ff-372d-4240-8660-d7a2627bbf08" />
+<img width="299" height="158" alt="image" src="https://github.com/user-attachments/assets/db43992b-08ca-4249-882d-722552ebd8ec" />
 
 ---
 
@@ -93,7 +93,7 @@ Additional operations specific to each data structure are also evaluated.
 
   *Note:* These functions are independent; the ADT itself still follows standard Sorted Set behavior.
   
-<img width="264" height="241" alt="image" src="https://github.com/user-attachments/assets/4a9d6dda-7cd3-44ff-b6af-7d1ab12f9c7e" />
+<img width="274" height="248" alt="image" src="https://github.com/user-attachments/assets/2913f7b3-e5ac-4abf-8e34-b562d0b75154" />
 
 ---
 
@@ -103,5 +103,4 @@ Additional operations specific to each data structure are also evaluated.
 - Delete: `remove()`
 - Search: `find()`
 
-<img width="264" height="175" alt="image" src="https://github.com/user-attachments/assets/185fa6e5-3b82-4373-906f-9e05989c66d8" />
-
+<img width="264" height="182" alt="image" src="https://github.com/user-attachments/assets/06b29aa6-cdca-49ee-bb0a-237f3117d5e3" />
