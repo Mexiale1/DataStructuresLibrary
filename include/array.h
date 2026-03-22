@@ -7,6 +7,8 @@ template <typename T> struct array {
   T *arr;
   size_t length;
 
+  array() : arr(nullptr), length(0) {}
+
   array(size_t n) {
     arr = new T[n];
     length = n;
@@ -25,6 +27,7 @@ template <typename T> struct array {
     arr = anotherTempArr.arr;
     length = anotherTempArr.length;
     anotherTempArr.arr = nullptr;
+    anotherTempArr.length = 0;
   }
 
   ~array() { delete[] arr; }
@@ -33,7 +36,13 @@ template <typename T> struct array {
     if (index >= length) {
       throw std::out_of_range("Out of bounds\n");
     }
+    return arr[index];
+  }
 
+  const T &operator[](size_t index) const {
+    if (index >= length) {
+      throw std::out_of_range("Out of bounds\n");
+    }
     return arr[index];
   }
 
@@ -42,15 +51,12 @@ template <typename T> struct array {
       return *this;
     }
 
-    delete[] arr;
-
-    length = anotherArr.length;
-    arr = new T[length];
-
-    for (size_t i = 0; i < length; i++) {
-      arr[i] = anotherArr.arr[i];
+    if (arr != nullptr) {
+      delete[] arr;
     }
 
+    arr = anotherArr.arr;
+    length = anotherArr.length;
     return *this;
   }
 
@@ -59,18 +65,21 @@ template <typename T> struct array {
       return *this;
     }
 
-    delete[] arr;
+    if (arr != nullptr) {
+      delete[] arr;
+    }
 
     arr = anotherArr.arr;
-    length = anotherArr.length;
-
     anotherArr.arr = nullptr;
+    length = anotherArr.length;
     anotherArr.length = 0;
-    
     return *this;
   }
 
   T *begin() { return arr; }
 
-  T end() { return arr + length; }
+  T *end() { return arr + length; }
+  
+  const T *begin() const { return arr; }
+  const T *end() const { return arr + length; }
 };

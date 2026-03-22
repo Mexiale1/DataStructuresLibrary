@@ -5,11 +5,14 @@
 
 using namespace std;
 
-const size_t UPPER_LIMIT = 1000000; // adjust size for benchmarking
+const size_t UPPER_LIMIT = 100000; 
 
 int main() {
     SLList<int> q;
 
+    cout << "\n";
+    cout << "Singly Linked List Benchmark  \n";
+    cout << "-----------------------------\n";
     auto startAdd = chrono::high_resolution_clock::now();
 
     for (size_t i = 0; i < UPPER_LIMIT; i++) {
@@ -31,8 +34,11 @@ int main() {
     chrono::duration<double> timeAdd = endAdd - startAdd;
     chrono::duration<double> timeRemove = endRemove - startRemove;
 
-    cout << "Time for add() (FIFO):      " << timeAdd.count() << "s\n";
-    cout << "Time for remove():          " << timeRemove.count() << "s\n";
-
+    cout << "Operation        Time (s)\n";
+    cout << "-----------------------------\n";
+    cout << "Add:             " << timeAdd.count() << "s\n";
+    cout << "Remove:          " << timeRemove.count() << "s\n";
+    cout << "\n";
     return 0;
 }
+

@@ -13,54 +13,63 @@ private:
 
 public:
     AdjacencyMatrix(size_t n) : matrix(n), n(n) {
+        // Initialize each row
         for (size_t i = 0; i < n; i++) {
-            matrix[i] = array<bool>(n);
+            // Create a new array for each row
+            array<bool> row(n);
             for (size_t j = 0; j < n; j++) {
-                matrix[i][j] = false;
+                row[j] = false;
             }
+            matrix[i] = row;
         }
     }
 
+    ~AdjacencyMatrix() {
+        // Clean up if needed
+    }
+
     bool addEdge(const int &i, const int &j) override {
-        if (i >= n || j >= n) return false;
+        if (i < 0 || j < 0 || static_cast<size_t>(i) >= n || static_cast<size_t>(j) >= n) return false;
         matrix[i][j] = true;
         return true;
     }
 
     bool removeEdge(const int &i, const int &j) override {
-        if (i >= n || j >= n) return false;
+        if (i < 0 || j < 0 || static_cast<size_t>(i) >= n || static_cast<size_t>(j) >= n) return false;
         matrix[i][j] = false;
         return true;
     }
 
     bool hasEdge(const int &i, const int &j) const override {
-        if (i >= n || j >= n) return false;
+        if (i < 0 || j < 0 || static_cast<size_t>(i) >= n || static_cast<size_t>(j) >= n) return false;
         return matrix[i][j];
     }
 
-    List<T> outEdges(const int &i) const override {
-        if (i >= (int)n) return nullptr;
+    List<T>* outEdges(const int &i) const override {
+        if (i < 0 || static_cast<size_t>(i) >= n) return nullptr;
         
         ArrayStack<T>* list = new ArrayStack<T>();
 
         for (size_t j = 0; j < n; j++) {
             if (matrix[i][j]) {
-                list->add(list->size(), j);
+                list->add(list->size(), static_cast<T>(j));
             }
         }
 
-        return *list; 
+        return list; 
     }
 
-    List<T> inEdges(const int &i) const override {
+    List<T>* inEdges(const int &i) const override {
+        if (i < 0 || static_cast<size_t>(i) >= n) return nullptr;
+        
         ArrayStack<T>* list = new ArrayStack<T>();
 
         for (size_t j = 0; j < n; j++) {
             if (matrix[j][i]) {
-                list->add(list->size(), j);
+                list->add(list->size(), static_cast<T>(j));
             }
         }
 
-        return *list;
+        return list;
     }
-}
+};
