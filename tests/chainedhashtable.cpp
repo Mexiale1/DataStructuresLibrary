@@ -5,7 +5,6 @@
 #include <cstddef>
 
 int main() {
-  ChainedHashTable<int> dog;
   auto minAdd = std::chrono::duration<double>::max();
   auto maxAdd = std::chrono::duration<double>::zero();
 
@@ -22,6 +21,7 @@ int main() {
   size_t i = 0;
 
   while (i < 10) {
+    ChainedHashTable<int> dog;
     std::chrono::time_point beforeTest = std::chrono::system_clock::now();
 
     for (size_t j = 0; j < UPPER_LIMIT; j++) {

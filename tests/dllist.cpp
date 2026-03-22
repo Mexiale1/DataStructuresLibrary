@@ -5,7 +5,6 @@
 #include <cstdlib>
 
 int main() {
-  DLList<int> dog; // Testing if it has no error
   size_t i = 0;
 
   auto minAdd = std::chrono::duration<double>::max();
@@ -22,6 +21,7 @@ int main() {
   auto avgRemove = std::chrono::duration<double>::zero();
 
   while (i < 5) {
+    DLList<int> dog;
     std::chrono::time_point beforeTest = std::chrono::system_clock::now();
 
     for (size_t i = 0; i < UPPER_LIMIT; i++) {
