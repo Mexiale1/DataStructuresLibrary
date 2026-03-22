@@ -1,16 +1,18 @@
 #include <iostream>
 #include <chrono>
 #include <cstdlib>
-#include "../src/rbt.h"
+#include "../src/redblacktrees.h"
 
 using namespace std;
 
-const size_t UPPER_LIMIT = 1000000; 
+const size_t UPPER_LIMIT = 100000; 
 
 int main() {
     RBTreeSet<int> tree;
 
-    cout << "RBTreeSet Benchmark\n";
+    cout << "\n";
+    cout << "Red Black Trees Benchmark\n";
+    cout << "-------------------------\n";
 
     auto startAdd = chrono::high_resolution_clock::now();
     for (size_t i = 0; i < UPPER_LIMIT; i++) {
@@ -26,13 +28,6 @@ int main() {
     }
     auto endFind = chrono::high_resolution_clock::now();
 
-    auto startFindNT = chrono::high_resolution_clock::now();
-    for (size_t i = 0; i < UPPER_LIMIT; i++) {
-        int val = rand() + UPPER_LIMIT; // likely not in tree
-        tree.find(val);
-    }
-    auto endFindNT = chrono::high_resolution_clock::now();
-
     auto startRemove = chrono::high_resolution_clock::now();
     for (size_t i = 0; i < UPPER_LIMIT / 2; i++) { 
         int val = rand() % UPPER_LIMIT;
@@ -42,15 +37,14 @@ int main() {
 
     chrono::duration<double> timeAdd = endAdd - startAdd;
     chrono::duration<double> timeFind = endFind - startFind;
-    chrono::duration<double> timeFindNT = endFindNT - startFindNT;
     chrono::duration<double> timeRemove = endRemove - startRemove;
 
-    cout << "Add:                     " << timeAdd.count() << " s\n";
-    cout << "Find (Values Likely There): " << timeFind.count() << " s\n";
-    cout << "Find (Values Not There): " << timeFindNT.count() << " s\n";
-    cout << "Remove:                  " << timeRemove.count() << " s\n";
-
-    cout << "Current tree size: " << tree.size() << endl;
+    cout << "Operation     Time (s)\n";
+    cout << "-------------------------\n";
+    cout << "Add:          " << timeAdd.count() << " s\n";
+    cout << "Find:         " << timeFind.count() << " s\n";
+    cout << "Remove:       " << timeRemove.count() << " s\n";
+    cout << "\n";
 
     return 0;
 }  
