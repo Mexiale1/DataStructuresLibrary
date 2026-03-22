@@ -8,7 +8,7 @@ All ADTs are benchmarked under the same conditions to ensure consistency and com
 
 **Benchmark Setup:**
 
-- Number of elements as $n$: 100,000 (Unless specified)
+- Number of elements as `n`: 100,000 (Unless specified)
 - Data type: integers
 - Data distribution: random values
 - Timing method: `std::chrono`
@@ -18,28 +18,28 @@ All ADTs are benchmarked under the same conditions to ensure consistency and com
 
 Note: The benchmarking numbers may by a result of one or multiple runs, which is decided through spread of results. This will be mentioned in the Detailed Benchmarks section.
 
-Note $_2$: Just as you would expect, some Data structres will not require all operations due to the nature of the ADT it realizes.
+Note$_2$: Just as you would expect, some Data structres will not require all operations due to the nature of the ADT it realizes.
 
 1. **Insertion** – adding elements to the data structure  
-   _(Insert $n$ integer values into each ADT)_
+   _(Insert `n` integer values into each ADT)_
 
 2. **Deletion** – removing elements from the data structure  
-   _(Remove $n$ elements from each ADT)_
+   _(Remove `n` elements from each ADT)_
 
 3. **Search / Find** – locating elements within the data structure  
-   _(Search for $n$ elements in each ADT)_
+   _(Search for `n` elements in each ADT)_
 
 4. **Unique** - May differ from each data structure, can be some twist added.
 
 ## Benchmark Summary Table
 
-| ADT            | Data Structure                         | Insert    | Delete    | Search    | Unique    |
-| -------------- | -------------------------------------- | --------- | --------- | --------- | --------- |
+| ADT            | Data Structure                         |  Insert   |  Delete   |  Search   |  Unique   |
+| -------------- | -------------------------------------- | :-------: | :-------: | :-------: | :-------: |
 | FILO QUEUE     | arraystack.cpp                         | 0.001028s | 0.000987s |           |
 | FIFO QUEUE     | sllist.cpp                             | 0.006520s | 0.003023s |           |
 | PRIORITY QUEUE | (to be implemented)                    |           |           |           |
 | DEQUE          | arraydeque.cpp                         |           |           |           |
-| LIST           | dllist.cpp                             | 12.69980s | 13.47440s | -         | 0.023854s |
+| LIST           | dllist.cpp                             | 12.69980s | 13.47440s |     -     | 0.023854s |
 | SORTED SET     | skiplist.cpp                           | 0.033042s | 0.032600s | 0.037054s |
 | SORTED SET     | redblacktrees.cpp                      | 0.024520s | 0.010506s | 0.015013s |
 | UNSORTED SET   | chainedhashtable.cpp ($n$ = 1,000,000) | 0.622102s | 0.186564s | 0.183910s |
