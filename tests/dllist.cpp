@@ -33,14 +33,11 @@ int main() {
     std::chrono::time_point afterAdd = std::chrono::system_clock::now();
 
     std::chrono::duration<double> add = afterAdd - beforeTest;
-    std::cout << "Add: " << add.count() << "s" << std::endl;
 
     dog.myMergeSort();
 
     std::chrono::time_point afterSort = std::chrono::system_clock::now();
     std::chrono::duration<double> sorting = afterSort - afterAdd;
-
-    std::cout << "Sorting: " << sorting.count() << "s" << std::endl;
 
     for (size_t i = 0; i < UPPER_LIMIT; i++) {
       int randIndex = std::rand() % dog.size();
@@ -50,9 +47,6 @@ int main() {
     std::chrono::time_point afterRemove = std::chrono::system_clock::now();
 
     std::chrono::duration<double> remove = afterRemove - afterSort;
-    std::cout << "Remove: " << remove.count() << "s" << std::endl;
-
-    i++;
 
     if (add > maxAdd)
       maxAdd = add;
@@ -72,6 +66,9 @@ int main() {
     avgAdd += add;
     avgSort += sorting;
     avgRemove += remove;
+
+    i++;
+    std::cout << "Iteration: " << i << std::endl;
   }
 
   avgAdd /= i;
