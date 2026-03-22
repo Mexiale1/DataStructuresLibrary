@@ -318,31 +318,34 @@ public:
         x->color = BLACK;
     }
 
-    void printHelper(Node* node, std::string indent, bool isLeft) const {
-    if (node == NIL) return;
+    void printHelper(Node* node, const std::string& indent, bool isLeft) const {
+        if (node == NIL) return;
 
-    std::cout << indent;
+        std::cout << indent;
 
-    if (node != root) {
-        if (isLeft) {
-            std::cout << "├── ";
-            indent += "│   ";
-        } else {
-            std::cout << "└── ";
-            indent += "    ";
+        if (node != root) {
+            if (isLeft) {
+                std::cout << "|-- ";  // left child
+            } else {
+                std::cout << "\\-- "; // right child
+            }
         }
-    }
 
-    // Print node value + color
-    std::cout << node->x;
-    if (node->color == RED)
-        std::cout << "(R)";
-    else
-        std::cout << "(B)";
-    std::cout << "\n";
+        std::cout << node->x;
+        if (node->color == RED)
+            std::cout << "(R)";
+        else
+            std::cout << "(B)";
+        std::cout << "\n";
 
-    printHelper(node->left, indent, true);
-    printHelper(node->right, indent, false);
+        std::string newIndent = indent;
+        if (node != root) {
+            if (isLeft) newIndent += "|   ";
+            else newIndent += "    ";
+        }
+
+        printHelper(node->left, newIndent, true);
+        printHelper(node->right, newIndent, false);
     }
 
     void printTree() const {
