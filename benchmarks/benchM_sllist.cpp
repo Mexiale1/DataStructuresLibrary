@@ -5,7 +5,7 @@
 
 using namespace std;
 
-const size_t UPPER_LIMIT = 1000000; // adjust size for benchmarking
+const size_t UPPER_LIMIT = 100000; // adjust size for benchmarking
 
 int main() {
     SLList<int> q;
