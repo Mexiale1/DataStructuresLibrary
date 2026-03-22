@@ -60,6 +60,7 @@ Additional operations specific to each data structure are also evaluated.
 | UNSORTED SET   | chainedhashtable.cpp |                                                    |
 | GRAPH          | adjacencymatrix.cpp  |                                                    |
 
+---
 
 ### FILO QUEUE (arraystack.cpp)
 - Insert: `push()`
