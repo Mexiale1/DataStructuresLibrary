@@ -29,11 +29,11 @@ A benchmark is performed for each Abstract Data Type (ADT) to evaluate its perfo
 
 | ADT            | Data Structure       | Insert        | Delete       | Search |
 | -------------- | -------------------- | ------------- | ------------ | ------ |
-| FILO QUEUE     | arraystack.cpp       |               |              | N/A    |
-| FIFO QUEUE     | sllist.cpp           | 0.007080s     | 0.006000s    | N/A    |
-| PRIORITY QUEUE | (to be implemented)  |               |              | N/A    |
-| DEQUE          | arraydeque.cpp       |               |              | N/A    |
-| LIST           | dllist.cpp           | 30s           | 30s          | N/A    |
+| FILO QUEUE     | arraystack.cpp       |               |              |        |
+| FIFO QUEUE     | sllist.cpp           | 0.007080s     | 0.006000s    |        |
+| PRIORITY QUEUE | (to be implemented)  |               |              |        |
+| DEQUE          | arraydeque.cpp       |               |              |        |
+| LIST           | dllist.cpp           | 30s           | 30s          |        |
 | SORTED SET     | skiplist.cpp         | 0.312762s     | 0.054806s    | 0.320001s   |
 | SORTED SET     | redblacktrees.cpp    | 0.018605s     | 0.009507s    | 0.030595s   |
 | UNSORTED SET   | chainedhashtable.cpp |               |              |        |
