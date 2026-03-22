@@ -2,28 +2,28 @@
 
 A benchmark is performed for each Abstract Data Type (ADT) to evaluate its performance under a consistent set of operations and conditions.
 
+## Benchmark Setup and Operations Measured
 
-## Benchmark Setup
+All ADTs are benchmarked under the same conditions to ensure consistency and comparability.
 
-* Number of elements: 100,000
-* Data type: integers
-* Data distribution: random values
-* Timing method: `std::chrono`
+**Benchmark Setup:**
 
-**Note:** All benchmark files are located in the `benchmarks` folder.
+- Number of elements: 100,000  
+- Data type: integers  
+- Data distribution: random values  
+- Timing method: `std::chrono`  
+- Note: All benchmark files are located in the `benchmarks` folder.
 
+**Operations Measured:**
 
-## Operations Measured
+1. **Insertion** – adding elements to the data structure  
+   *(Insert 100,000 integer values into each ADT)*
 
-1. **Insertion** – adding elements to the data structure
-   (Insert 100,000 integer values to each ADT)
+2. **Deletion** – removing elements from the data structure  
+   *(Remove 100,000 elements from each ADT)*
 
-2. **Deletion** – removing elements from the data structure
-   (Remove 100,000 elements from each ADT)
-
-3. **Search/Find** – locating elements within the data structure
-   (Searching for 100,000 elements in each ADT )
-
+3. **Search / Find** – locating elements within the data structure  
+   *(Search for 100,000 elements in each ADT)*
 
 ## Benchmark Summary Table
 
