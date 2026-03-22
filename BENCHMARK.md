@@ -33,19 +33,17 @@ Note2: Just as you would expect, some Data structures will not test all operatio
 
 ## Benchmark Summary Table
 
-| ADT            | Data Structure                         |  Insert   |  Delete   |  Search   |  Unique   |
-| -------------- | -------------------------------------- | :-------: | :-------: | :-------: | :-------: |
-| FILO QUEUE     | arraystack.cpp                         | 0.001028s | 0.000987s |           |
-| FIFO QUEUE     | sllist.cpp                             | 0.006520s | 0.003023s |           |
-| PRIORITY QUEUE | (to be implemented)                    |           |           |           |
-| DEQUE          | arraydeque.cpp (`n` = 10,000,000)      | 0.238120s | 0.115319s |     -     |     -     |
-| LIST           | dllist.cpp                             | 12.39130s | 13.10700s |     -     | 0.022589s |
-| SORTED SET     | skiplist.cpp                           | 0.033042s | 0.032600s | 0.037054s |
-| SORTED SET     | redblacktrees.cpp                      | 0.024520s | 0.010506s | 0.015013s |
-| UNSORTED SET   | chainedhashtable.cpp (`n` = 1,000,000) | 0.564023s | 0.164313s | 0.161988s |
-| GRAPH          | adjacencymatrix.cpp                    |           |           |           |
-
----
+| ADT            | Data Structure                         |   Insert   |   Delete   |   Search   |   Unique   |
+| -------------- | -------------------------------------- | :--------: | :--------: | :--------: | :--------: |
+| FILO QUEUE     | arraystack.cpp                         | 0.0014107s | 0.0011280s |      -     |      -     |
+| FIFO QUEUE     | sllist.cpp                             | 0.0038425s | 0.0027372s |      -     | 19.862600s |
+| PRIORITY QUEUE | (to be implemented)                    |            |            |      -     |      -     |
+| DEQUE          | arraydeque.cpp (`n` = 10,000,000)      | 0.2381200s | 0.1153190s |      -     |      -     |
+| LIST           | dllist.cpp                             | 12.391300s | 13.107000s |      -     | 0.022589s  |
+| SORTED SET     | skiplist.cpp                           | 0.0323282s | 0.0252603s | 0.0316317s | 0.0315943s |
+| SORTED SET     | redblacktrees.cpp                      | 0.0188939s | 0.0119735s | 0.0137733s |
+| UNSORTED SET   | chainedhashtable.cpp (`n` = 1,000,000) | 0.5640230s | 0.1643130s | 0.1619880s |
+| GRAPH          | adjacencymatrix.cpp                    |            |            |            |
 
 ## Detailed Benchmarks Per ADT
 
@@ -55,12 +53,12 @@ Additional operations specific to each data structure are also evaluated.
 
 | ADT            | Data Structure       | Functions Tested                                                |
 | -------------- | -------------------- | --------------------------------------------------------------- |
-| FILO QUEUE     | arraystack.cpp       |                                                                 |
-| FIFO QUEUE     | sllist.cpp           | enqueue / add, dequeue / remove, add (Sorted) (unique)          |
+| FILO QUEUE     | arraystack.cpp       | push, pop                                                       |
+| FIFO QUEUE     | sllist.cpp           | add, remove, addSorted (unique)                                 |
 | PRIORITY QUEUE | (to be implemented)  |                                                                 |
 | DEQUE, LIST    | arraydeque.cpp       | addFirst, addLast, removeFirst, removeLast                      |
 | LIST           | dllist.cpp           | add, remove, sort (unique)                                      |
-| SORTED SET     | skiplist.cpp         | add, remove, find, add(Reverse), remove(Reverse), find(Reverse) |
+| SORTED SET     | skiplist.cpp         | add, remove, find, (unique): add2, remove2, find2               |
 | SORTED SET     | redblacktrees.cpp    | add, remove, find                                               |
 | UNSORTED SET   | chainedhashtable.cpp | add, remove, find                                               |
 | GRAPH          | adjacencymatrix.cpp  |                                                                 |
@@ -69,24 +67,33 @@ Additional operations specific to each data structure are also evaluated.
 
 ### FILO QUEUE (arraystack.cpp)
 
-- Insert: `push()`
+- Insert: `push(data)`
 - Remove: `pop()`
 
-<img width="289" height="159" alt="image" src="https://github.com/user-attachments/assets/e5052182-649b-4e1a-8285-7df141025a81" />
+_Note:_ The result is an average of 10 repeated runs.
 
+```
+Push: (max) 0.002553s  (min) 0.000983s  (avg) 0.0014107s
+Pop:  (max) 0.001524s  (min) 0.000979s  (avg) 0.001128s
+```
 ---
 
 ### FIFO QUEUE (sllist.cpp)
 
-- Insert: `enqueue()` / `add()`
-- Delete: `dequeue()` / `remove()`
-- Additional Function (Twist):
-  - Sorted SLList (`addSort()`) – inserts elements in sorted order instead of always adding at the tail (no longer strictly FIFO)
+- Insert: `add(data)`
+- Delete: `remove()`
+- Unique: `addSorted(data)`
+  - Elements are sorted in order(ascending) instead of always adding at the tail (no longer strictly FIFO)
 
-  _Note:_ This function is independent; the ADT itself still follows FIFO behavior.
+   _Note:_ This function is independent; the ADT itself still follows FIFO behavior.
 
-<img width="299" height="158" alt="image" src="https://github.com/user-attachments/assets/db43992b-08ca-4249-882d-722552ebd8ec" />
+_Note_: The result is an average of 10 repeated runs.
 
+```
+Add:    (max) 0.008609s (min) 0.002987s (avg) 0.0038425s
+Remove: (max) 0.006172s (min) 0.001997s (avg) 0.0027372s
+Unique: (max) 35.0308s (min) 14.8552s (avg) 19.8626s
+```
 ---
 
 ### LIST & DEQUE (arraydeque.cpp)
@@ -96,7 +103,7 @@ Additional operations specific to each data structure are also evaluated.
 - Delete: `removeFirst()`, `removeLast()`
   - Similar to Insert, each method is called for half of `n`
 
-Note: The result is an average of 10 repeated runs.
+_Note:_ The result is an average of 10 repeated runs.
 
 ```
 Add: (max) 0.265644s (min) 0.229743s (avg) 0.23812s
@@ -126,27 +133,41 @@ Remove: (max) 13.3233s (min) 12.954s (avg) 13.107s
 
 ### SORTED SET (skiplist.cpp)
 
-- Insert: `add()`
-- Delete: `remove()`
-- Search: `find()`
-- Additional Functions (Twist):
-  - Reverse Skiplist (Descending Order) – `add2()`, `remove2()`, `find2()`
-    - Implements a skiplist that maintains elements in descending order.
+- Insert: `add(data)`
+- Delete: `remove(data)`
+- Search: `find(data)`
+  - `data` is generated using std::rand()
+- Unique: `add2(data)`, `remove2(data)`, `find2(data))`
+  - Implements a skiplist that maintains elements in descending order.
+   _Note:_ These functions are independent; the ADT itself still follows standard Sorted Set behavior.
 
-  _Note:_ These functions are independent; the ADT itself still follows standard Sorted Set behavior.
+_Note:_ The result is an average of 10 repeated runs.
 
-<img width="274" height="248" alt="image" src="https://github.com/user-attachments/assets/2913f7b3-e5ac-4abf-8e34-b562d0b75154" />
+```
+Add:      (max) 0.038639s (min) 0.02752s (avg) 0.0323282s
+Find:     (max) 0.052502s (min) 0.026083s (avg) 0.0316317s
+Remove:   (max) 0.029134s (min) 0.022821s (avg) 0.0252603s
+Add2:     (max) 0.038036s (min) 0.02859s (avg) 0.031464s
+Find2:    (max) 0.047631s (min) 0.027574s (avg) 0.0315943s  
+Remove2:  (max) 0.068427s (min) 0.021285s (avg) 0.0293766s
+```
 
 ---
 
 ### SORTED SET (redblacktrees.cpp)
 
-- Insert: `add()`
-- Delete: `remove()`
-- Search: `find()`
+- Insert: `add(data)`
+- Delete: `remove(data)`
+- Search: `find(data)`
+  - `data` is generated using std::rand() 
 
-<img width="264" height="182" alt="image" src="https://github.com/user-attachments/assets/06b29aa6-cdca-49ee-bb0a-237f3117d5e3" />
+_Note:_ The result is an average of 10 repeated runs.
 
+```
+Add:    (max) 0.020566s (min) 0.016543s (avg) 0.0188939s
+Find:   (max) 0.016741s (min) 0.010568s (avg) 0.0137733s
+Remove: (max) 0.018495s (min) 0.009615s (avg) 0.0119735s
+```
 ---
 
 ### UNSORTED SET (chainedhashtable.cpp)
