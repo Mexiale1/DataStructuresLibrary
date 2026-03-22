@@ -18,7 +18,7 @@ All ADTs are benchmarked under the same conditions to ensure consistency and com
 
 Note: The benchmarking numbers may by a result of one or multiple runs, which is decided through spread of results. This will be mentioned in the Detailed Benchmarks section.
 
-$\text(Note)^2$: Just as you would expect, some Data structures will not require all operations due to the nature of the ADT it realizes.
+$\text{Note}^2$: Just as you would expect, some Data structures will not require all operations due to the nature of the ADT it realizes.
 
 1. **Insertion** – adding elements to the data structure  
    _(Insert `n` integer values into each ADT)_
