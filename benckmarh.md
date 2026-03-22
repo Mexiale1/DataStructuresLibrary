@@ -2,6 +2,7 @@
 
 A benchmark is performed for each Abstract Data Type (ADT) to evaluate its performance under a consistent set of operations and conditions.
 
+
 ## Benchmark Setup
 
 * Number of elements: 100,000
@@ -10,6 +11,7 @@ A benchmark is performed for each Abstract Data Type (ADT) to evaluate its perfo
 * Timing method: `std::chrono`
 
 **Note:** All benchmark files are located in the `benchmarks` folder.
+
 
 ## Operations Measured
 
@@ -22,13 +24,14 @@ A benchmark is performed for each Abstract Data Type (ADT) to evaluate its perfo
 3. **Search/Find** – locating elements within the data structure
    (Searching for 100,000 elements)
 
+
 ## Benchmark Summary Table
 
-| ADT            | Data Structure       | Insert     | Delete    | Search |
-| -------------- | -------------------- | ---------- | --------- | ------ |
-| FILO QUEUE     | arraystack.cpp       |            |           | N/A    |
-| FIFO QUEUE     | sllist.cpp           | 0.006503s  | 0.004010s | N/A    |
-| PRIORITY QUEUE | (to be implemented)  |            |           | N/A    |
+| ADT            | Data Structure       | Insert        | Delete       | Search |
+| -------------- | -------------------- | ------------- | ------------ | ------ |
+| FILO QUEUE     | arraystack.cpp       |               |              | N/A    |
+| FIFO QUEUE     | sllist.cpp           | 0.006503s     | 0.004010s    | N/A    |
+| PRIORITY QUEUE | (to be implemented)  |               |           | N/A    |
 | DEQUE          | arraydeque.cpp       |            |           | N/A    |
 | LIST           | dllist.cpp           | 30s        | 30s       | N/A    |
 | SORTED SET     | skiplist.cpp         |            |           |        |
@@ -42,6 +45,7 @@ A benchmark is performed for each Abstract Data Type (ADT) to evaluate its perfo
 
 Additional operations specific to each data structure are also evaluated.
 
+
 ## Summary of Functions Per ADT
 
 | ADT            | Data Structure       | Functions Tested                                   |
@@ -51,10 +55,11 @@ Additional operations specific to each data structure are also evaluated.
 | PRIORITY QUEUE | (to be implemented)  |                                                    |
 | DEQUE          | arraydeque.cpp       |                                                    |
 | LIST           | dllist.cpp           |                                                    |
-| SORTED SET     | skiplist.cpp         | add, remove, find, add(Reverse), remove(Reverse), find(Reverse)   |
+| SORTED SET     | skiplist.cpp         | add, remove, find, add(Reverse), remove(Reverse), find(Reverse)    |
 | SORTED SET     | redblacktrees.cpp    | add, remove, find                                  |
 | UNSORTED SET   | chainedhashtable.cpp |                                                    |
 | GRAPH          | adjacencymatrix.cpp  |                                                    |
+
 
 ### FIFO QUEUE (sllist.cpp)
 
@@ -66,14 +71,6 @@ Additional operations specific to each data structure are also evaluated.
 
   *Note:* This function is independent; the ADT itself still follows FIFO behavior.
 
-**Results:**
-
-
-- Insert: 0.006503 s  
-- Delete: 0.00401 s
-
-**Additional Function:**
-- Add Sorted: 55.076 s  
 <img width="275" height="102" alt="image" src="https://github.com/user-attachments/assets/f1949df4-75ba-4277-9cd0-76845df1af6d" />
 
 ---
@@ -90,19 +87,6 @@ Additional operations specific to each data structure are also evaluated.
 
   *Note:* These functions are independent; the ADT itself still follows standard Sorted Set behavior.
 
-**Results:**
-
-
-- Insert: 0.312716 s
-- Delete: 0.067019 s
-- Search: 0.315338 s
-
-**Additional Functions:**
-
-- Insert2: 0.425339 s
-- Delete2: 0.405836 s
-- Search2: 0.056545 s
-  
   <img width="263" height="227" alt="image" src="https://github.com/user-attachments/assets/db2856b9-4753-4e2f-a10a-1a4cbaff7dbb" />
 
 ---
@@ -113,11 +97,6 @@ Additional operations specific to each data structure are also evaluated.
 * Delete: `remove()`
 * Search: `find()`
 
-**Results:**
-
-* Insert: ___
-* Delete: ___
-* Search: ___
 
 ---
 
