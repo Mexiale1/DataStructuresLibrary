@@ -67,7 +67,7 @@ Additional operations specific to each data structure are also evaluated.
 
 <img width="288" height="157" alt="image" src="https://github.com/user-attachments/assets/2414d7b4-4bb1-488d-9209-43fcbfe8230f" />
 
---
+---
 
 ### FIFO QUEUE (sllist.cpp)
 
@@ -78,7 +78,7 @@ Additional operations specific to each data structure are also evaluated.
 
   *Note:* This function is independent; the ADT itself still follows FIFO behavior.
 
-<img width="262" height="172" alt="image" src="https://github.com/user-attachments/assets/53756807-6ad2-4966-9140-0afccf3340ef" />
+<img width="265" height="181" alt="image" src="https://github.com/user-attachments/assets/d96340ff-372d-4240-8660-d7a2627bbf08" />
 
 ---
 
