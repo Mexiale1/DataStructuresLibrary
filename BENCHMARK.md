@@ -39,10 +39,10 @@ $\text(Note)^2$: Just as you would expect, some Data structures will not require
 | FIFO QUEUE     | sllist.cpp                             | 0.006520s | 0.003023s |           |
 | PRIORITY QUEUE | (to be implemented)                    |           |           |           |
 | DEQUE          | arraydeque.cpp                         |           |           |           |
-| LIST           | dllist.cpp                             | 12.69980s | 13.47440s |     -     | 0.023854s |
+| LIST           | dllist.cpp                             | 12.39130s | 13.10700s |     -     | 0.022589s |
 | SORTED SET     | skiplist.cpp                           | 0.033042s | 0.032600s | 0.037054s |
 | SORTED SET     | redblacktrees.cpp                      | 0.024520s | 0.010506s | 0.015013s |
-| UNSORTED SET   | chainedhashtable.cpp ($n$ = 1,000,000) | 0.622102s | 0.186564s | 0.183910s |
+| UNSORTED SET   | chainedhashtable.cpp ($n$ = 1,000,000) | 0.564023s | 0.164313s | 0.161988s |
 | GRAPH          | adjacencymatrix.cpp                    |           |           |           |
 
 ---
@@ -98,10 +98,12 @@ Additional operations specific to each data structure are also evaluated.
 - Unique: `mySort()`:
   - Using the `Merge Sort` algorithm
 
-  _Note:_ The results were averaged by 5 test cases due to variance. This variance may be due to the randomized indexing.
+  _Note:_ The results were averaged by 5 test cases due to variance. This variance may be due to the randomized indexing. Set only to 5, as 10 takes to long and crashes the program.
 
 ```
-placeholder
+Add: (max) 13.1311s (min) 11.3485s (avg) 12.3913s
+Sort: (max) 0.0242956s (min) 0.0217152s (avg) 0.0225892s
+Remove: (max) 13.3233s (min) 12.954s (avg) 13.107s
 ```
 
 ---
@@ -128,3 +130,25 @@ placeholder
 - Search: `find()`
 
 <img width="264" height="182" alt="image" src="https://github.com/user-attachments/assets/06b29aa6-cdca-49ee-bb0a-237f3117d5e3" />
+
+---
+
+### UNSORTED SET (chainedhashtable.cpp)
+
+- Insert: `add(data)`
+- Delete: `remove(data)`
+- Find: `find(data)`
+
+  _Note:_ The results were averaged by 10 test cases.
+
+  ```
+  Minimum time (add): 0.508484s
+  Maximum time (add): 0.674754s
+  Minimum time (find): 0.153739s
+  Maximum time (find): 0.177382s
+  Minimum time (remove): 0.156726s
+  Maximum time (remove): 0.17758s
+  Average time (add): 0.564023s
+  Average time (find): 0.161988s
+  Average time (remove): 0.164313s
+  ```
