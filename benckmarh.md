@@ -65,12 +65,10 @@ Additional operations specific to each data structure are also evaluated.
 
 - Insert: `enqueue()` / `add()`
 - Delete: `dequeue()` / `remove()`
-
-**Additional Function (Twist):**
-- **Sorted SLList (`addSort()`)** – inserts elements in sorted order instead of always adding at the tail (no longer strictly FIFO)
+- Additional Function (Twist):
+   - Sorted SLList (`addSort()`) – inserts elements in sorted order instead of always adding at the tail (no longer strictly FIFO)
 
   *Note:* This function is independent; the ADT itself still follows FIFO behavior.
-
 <img width="275" height="102" alt="image" src="https://github.com/user-attachments/assets/f1949df4-75ba-4277-9cd0-76845df1af6d" />
 
 ---
@@ -80,14 +78,13 @@ Additional operations specific to each data structure are also evaluated.
 - Insert: `add()`
 - Delete: `remove()`
 - Search: `find()`
-
-**Additional Functions (Twist):**
-- **Reverse Skiplist (Descending Order)** – `add2()`, `remove2()`, `find2()`  
+-Additional Functions (Twist):
+  - Reverse Skiplist (Descending Order) – `add2()`, `remove2()`, `find2()`  
   Implements a skiplist that maintains elements in descending order.
 
   *Note:* These functions are independent; the ADT itself still follows standard Sorted Set behavior.
 
-  <img width="263" height="227" alt="image" src="https://github.com/user-attachments/assets/db2856b9-4753-4e2f-a10a-1a4cbaff7dbb" />
+<img width="263" height="227" alt="image" src="https://github.com/user-attachments/assets/db2856b9-4753-4e2f-a10a-1a4cbaff7dbb" />
 
 ---
 
