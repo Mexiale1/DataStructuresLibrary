@@ -60,8 +60,8 @@ int main() {
   std::cout << "Minimum time (add): " << minAdd.count() << "s" << std::endl;
   std::cout << "Maximum time (add): " << maxAdd.count() << "s" << std::endl;
 
-  std::cout << "Minimum time (find): " << minAdd.count() << "s" << std::endl;
-  std::cout << "Maximum time (find): " << maxAdd.count() << "s" << std::endl;
+  std::cout << "Minimum time (find): " << minFind.count() << "s" << std::endl;
+  std::cout << "Maximum time (find): " << maxFind.count() << "s" << std::endl;
 
   std::cout << "Average time (add): " << avgAdd.count() << "s" << std::endl;
   std::cout << "Average time (find): " << avgFind.count() << "s" << std::endl;
